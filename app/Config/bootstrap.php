@@ -184,3 +184,5 @@ CakeLog::config('error', array(
  * Loading plugins
  */
 CakePlugin::load('Migrations');
+CakePlugin::load('DebugKit');
+CakePlugin::load('TwitterBootstrap');
