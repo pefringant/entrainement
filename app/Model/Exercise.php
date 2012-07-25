@@ -5,7 +5,13 @@ App::uses('AppModel', 'Model');
  *
  */
 class Exercise extends AppModel {
-
+/**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'short_name';
+	
 /**
  * Validation rules
  *
@@ -32,7 +38,7 @@ class Exercise extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'description' => array(
+		/*'description' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -41,6 +47,6 @@ class Exercise extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 	);
 }

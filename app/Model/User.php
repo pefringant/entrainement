@@ -6,6 +6,13 @@ App::uses('AppModel', 'Model');
  */
 class User extends AppModel {
 /**
+ * Display field
+ *
+ * @var string
+ */
+	public $displayField = 'short_name';
+
+/**
  * hasMany associations
  * 
  * @var array
@@ -44,8 +51,8 @@ class User extends AppModel {
 			'email' => array(
 				'rule' => array('email'),
 				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
+				'allowEmpty' => true,
+				'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
@@ -80,15 +87,15 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'photo' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+		//'photo' => array(
+			//'notempty' => array(
+				//'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+			//),
+		//),
 	);
 }

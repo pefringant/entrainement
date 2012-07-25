@@ -11,7 +11,6 @@
 			<th><?php echo $this->Paginator->sort('weight'); ?></th>
 			<th><?php echo $this->Paginator->sort('stop'); ?></th>
 			<th><?php echo $this->Paginator->sort('break'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
@@ -19,10 +18,10 @@
 	<tr>
 		<td><?php echo h($program['Program']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($program['Exercise']['id'], array('controller' => 'exercises', 'action' => 'view', $program['Exercise']['id'])); ?>
+			<?php echo $this->Html->link($program['Exercise']['short_name'], array('controller' => 'exercises', 'action' => 'view', $program['Exercise']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($program['User']['id'], array('controller' => 'users', 'action' => 'view', $program['User']['id'])); ?>
+			<?php echo $this->Html->link($program['User']['short_name'], array('controller' => 'users', 'action' => 'view', $program['User']['id'])); ?>
 		</td>
 		<td><?php echo h($program['Program']['effective_date']); ?>&nbsp;</td>
 		<td><?php echo h($program['Program']['sets']); ?>&nbsp;</td>
@@ -30,7 +29,6 @@
 		<td><?php echo h($program['Program']['weight']); ?>&nbsp;</td>
 		<td><?php echo h($program['Program']['stop']); ?>&nbsp;</td>
 		<td><?php echo h($program['Program']['break']); ?>&nbsp;</td>
-		<td><?php echo h($program['Program']['created']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $program['Program']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $program['Program']['id'])); ?>

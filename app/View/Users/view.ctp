@@ -21,9 +21,9 @@
 			<?php echo h($user['User']['email']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Fisrt Name'); ?></dt>
+		<dt><?php echo __('First Name'); ?></dt>
 		<dd>
-			<?php echo h($user['User']['fisrt_name']); ?>
+			<?php echo h($user['User']['first_name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Last Name'); ?></dt>
