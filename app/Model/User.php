@@ -5,6 +5,14 @@ App::uses('AppModel', 'Model');
  *
  */
 class User extends AppModel {
+/**
+ * hasMany associations
+ * 
+ * @var array
+ */
+	public $hasMany = array(
+		'Program'
+	);
 
 /**
  * Validation rules
