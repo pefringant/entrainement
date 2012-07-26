@@ -33,16 +33,18 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $components = array(
-		// App
+		// Core
 		
 		// Plugins
 		'DebugKit.Toolbar',
 	);
 
 	public $helpers = array(
-		// App
+		// Core
 		'Html',
 		'Form',
+		'Js' => array('Jquery'),
+		// App
 		'TimePaginator',
 		// Plugins
 		'TB' => array(

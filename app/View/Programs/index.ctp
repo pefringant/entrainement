@@ -38,8 +38,33 @@
 		$addIcon = $this->TB->icon('plus', 'white');
 		echo $this->Html->link("$addIcon Ajouter un athlète", array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false));
 		?>
+
+		<a class="btn" data-toggle="modal" href="#myModal">Launch Modal</a>
 	</div>
 	<?php endif; ?>
 
 	<?php echo $this->element('time_pagination', compact('date')); ?>
 </div>
+
+
+<div class="modal hide" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+
+<?php 
+$this->Js->buffer("
+	$('#myModal').modal({
+		remote: '/modal.html'
+	});
+");
+?>

@@ -32,7 +32,33 @@
 		</div>
 	</div>
 
-	<?php echo $this->Html->script('jquery-1.7.2.min'); ?>
-	<?php echo $this->Html->script('bootstrap.min'); ?>
+	<?php
+	/**
+	 * Javascript includes
+	 */
+	echo $this->Html->script('jquery-1.7.2.min');
+
+	// Twitter Bootstrap files
+	$twitterBoostrapJsFiles = array(
+		'bootstrap-transition',
+		'bootstrap-alert',
+		'bootstrap-modal',
+		'bootstrap-dropdown',
+		'bootstrap-scrollspy',
+		'bootstrap-tab',
+		'bootstrap-tooltip',
+		'bootstrap-popover',
+		'bootstrap-button',
+		'bootstrap-collapse',
+		'bootstrap-carousel',
+		'bootstrap-typeahead',
+	);
+
+	foreach ($twitterBoostrapJsFiles as $file) {
+		echo $this->Html->script($file);
+	}
+
+	echo $this->Js->writeBuffer();
+	?>
 </body>
 </html>
