@@ -6,15 +6,20 @@ App::uses('AppController', 'Controller');
  * @property Program $Program
  */
 class ProgramsController extends AppController {
-
 /**
  * index method
  *
  * @return void
  */
-	public function index() {
+	public function index($date = null) {
+		if (empty($date) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+			$date = date('Y-m-d');
+		}
+
 		$this->Program->recursive = 0;
-		$this->set('programs', $this->paginate());
+		$programs = $this->Program->findAllByEffectiveDate($date);
+
+		$this->set(compact('date', 'programs'));
 	}
 
 /**

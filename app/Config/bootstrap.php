@@ -181,6 +181,11 @@ CakeLog::config('error', array(
 ));
 
 /**
+ * Locale
+ */
+setlocale(LC_ALL, 'french');
+
+/**
  * Loading plugins
  */
 CakePlugin::load('Migrations');

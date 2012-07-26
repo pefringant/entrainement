@@ -43,6 +43,7 @@ class AppController extends Controller {
 		// App
 		'Html',
 		'Form',
+		'TimePaginator',
 		// Plugins
 		'TB' => array(
 	        'className' => 'TwitterBootstrap.TwitterBootstrap'
