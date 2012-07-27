@@ -1,8 +1,8 @@
 <?php
 $mainNav = array(
-	"Programmes" => array('plugin'=>null, 'controller'=>'programs', 'action'=>'index'),
-	"Exercices" => array('plugin'=>null, 'controller'=>'exercises', 'action'=>'index'),
+	"Aujourd'hui" => array('plugin'=>null, 'controller'=>'users', 'action'=>'daily'),
 	"Athlètes" => array('plugin'=>null, 'controller'=>'users', 'action'=>'index'),
+	"Exercices" => array('plugin'=>null, 'controller'=>'exercises', 'action'=>'index'),
 );
 ?>
 
@@ -21,7 +21,7 @@ $mainNav = array(
 			<div class="nav-collapse">
 				<ul class="nav">
 					<?php foreach ($mainNav as $label => $url): ?>
-					<li<?php if ($this->params['controller'] == $url['controller']) echo ' class="active"'; ?>>
+					<li<?php if ($this->request->controller == $url['controller'] && $this->request->action == $url['action']) echo ' class="active"'; ?>>
 						<?php echo $this->Html->link($label, $url); ?> 
 					</li>
 					<?php endforeach; ?> 

@@ -21,6 +21,43 @@ class User extends AppModel {
 		'Program'
 	);
 
+	public function findDaily($date) {
+		$users = $this->find('all', array(
+			'fields' => array('User.id'),
+			'conditions' => array(
+				'Program.effective_date' => $date,
+			),
+			'joins' => array(
+				array(
+					'table' => 'programs',
+					'alias' => 'Program',
+					'type' => 'LEFT',
+					'conditions' => array('Program.user_id = User.id'),
+				)
+			),
+			'recursive' => -1
+		));
+
+		if (empty($users)) return false;
+
+		$users_ids = array_unique(Set::extract('/User/id', $users));
+
+		$results = $this->find('all', array(
+			'conditions' => array(
+				'User.id' => $users_ids,
+			),
+			'contain' => array(
+				'Program' => array(
+					'conditions' => array('Program.effective_date' => $date),
+					'Exercise'
+				)
+			),
+			'order' => 'User.' . $this->displayField,
+		));
+
+		return $results;
+	}
+
 /**
  * Validation rules
  *
@@ -30,72 +67,47 @@ class User extends AppModel {
 		'username' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'allowEmpty' => false,
+				'required' => true,
+				'message' => "Vous devez renseigner le login",
 			),
 		),
-		'password' => array(
+		/*'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
-		),
+		),*/
 		'email' => array(
 			'email' => array(
 				'rule' => array('email'),
-				//'message' => 'Your custom message here',
 				'allowEmpty' => true,
 				'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'message' => "Vous devez fournir une adresse email valide",
 			),
 		),
 		'fisrt_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'allowEmpty' => true,
+				'required' => false,
+				'message' => "Vous devez renseigner le prénom",
 			),
 		),
 		'last_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'allowEmpty' => true,
+				'required' => false,
+				'message' => "Vous devez renseigner le nom",
 			),
 		),
 		'short_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'allowEmpty' => true,
+				'required' => false,
+				'message' => "Vous devez renseigner le nom court ou le surnom pour l'affichage",
 			),
 		),
-		//'photo' => array(
-			//'notempty' => array(
-				//'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			//),
-		//),
 	);
 }

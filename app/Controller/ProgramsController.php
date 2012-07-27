@@ -11,15 +11,11 @@ class ProgramsController extends AppController {
  *
  * @return void
  */
-	public function index($date = null) {
-		if (empty($date) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
-			$date = date('Y-m-d');
-		}
-
+	public function index() {
 		$this->Program->recursive = 0;
-		$programs = $this->Program->findAllByEffectiveDate($date);
+		$programs = $this->paginate();
 
-		$this->set(compact('date', 'programs'));
+		$this->set(compact('programs'));
 	}
 
 /**
@@ -51,9 +47,7 @@ class ProgramsController extends AppController {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
 				$this->Session->setFlash(__('The program has been saved'));
-				if (!$this->request->is('ajax')) {
-					$this->redirect(array('action' => 'index'));
-				}
+				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The program could not be saved. Please, try again.'));
 			}
