@@ -43,11 +43,17 @@ class ProgramsController extends AppController {
  * @return void
  */
 	public function add() {
+		if ($this->request->is('ajax')) {
+			$this->viewPath .= DS . 'ajax';
+		}
+
 		if ($this->request->is('post')) {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
 				$this->Session->setFlash(__('The program has been saved'));
-				$this->redirect(array('action' => 'index'));
+				if (!$this->request->is('ajax')) {
+					$this->redirect(array('action' => 'index'));
+				}
 			} else {
 				$this->Session->setFlash(__('The program could not be saved. Please, try again.'));
 			}

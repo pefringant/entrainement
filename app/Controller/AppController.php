@@ -34,7 +34,8 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $components = array(
 		// Core
-		
+		'RequestHandler',
+		'Session',
 		// Plugins
 		'DebugKit.Toolbar',
 	);
@@ -43,12 +44,13 @@ class AppController extends Controller {
 		// Core
 		'Html',
 		'Form',
+		'Session',
 		'Js' => array('Jquery'),
 		// App
 		'TimePaginator',
 		// Plugins
 		'TB' => array(
-	        'className' => 'TwitterBootstrap.TwitterBootstrap'
+			'className' => 'TwitterBootstrap.TwitterBootstrap'
 		),
 	);
 }

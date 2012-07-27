@@ -40,17 +40,17 @@
 
 	// Twitter Bootstrap files
 	$twitterBoostrapJsFiles = array(
-		'bootstrap-transition',
+		//'bootstrap-transition',
 		'bootstrap-alert',
 		'bootstrap-modal',
-		'bootstrap-dropdown',
-		'bootstrap-scrollspy',
-		'bootstrap-tab',
+		//'bootstrap-dropdown',
+		//'bootstrap-scrollspy',
+		//'bootstrap-tab',
 		'bootstrap-tooltip',
 		'bootstrap-popover',
-		'bootstrap-button',
-		'bootstrap-collapse',
-		'bootstrap-carousel',
+		//'bootstrap-button',
+		//'bootstrap-collapse',
+		//'bootstrap-carousel',
 		'bootstrap-typeahead',
 	);
 
