@@ -11,7 +11,7 @@ class Exercise extends AppModel {
  * @var string
  */
 	public $displayField = 'short_name';
-	
+
 /**
  * Validation rules
  *
@@ -21,32 +21,10 @@ class Exercise extends AppModel {
 		'full_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+				'required' => true,
+				'allowEmpty' => false,
+				'message' => "Vous devez renseigner le nom complet de l'exercice",
 			),
 		),
-		'short_name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		/*'description' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),*/
 	);
 }

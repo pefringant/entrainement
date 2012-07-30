@@ -191,3 +191,4 @@ setlocale(LC_ALL, 'french');
 CakePlugin::load('Migrations');
 CakePlugin::load('DebugKit');
 CakePlugin::load('TwitterBootstrap');
+CakePlugin::load('Upload');

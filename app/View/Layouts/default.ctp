@@ -3,7 +3,6 @@
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title><?php echo $title_for_layout; ?></title>
-	<!-- meta info -->
 	<?php
 		echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'));
 	?>
@@ -13,17 +12,19 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<!-- styles -->
 	<?php
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-responsive.min');
+		echo $this->Html->css('screen');
 	?>
-	<!-- page specific scripts -->
-		<?php echo $scripts_for_layout; ?>
+	
+	<!--[if IE]>
+		<?php echo $this->Html->css('ie'); ?> 
+	<![endif]-->
 </head>
 
 <body>
-	<?php echo $this->element('navbar'); ?> 
+	<?php echo $this->element('Layout'.DS.'navbar'); ?> 
 
 	<div class="container-fluid">
 		<div class="row-fluid">
@@ -58,6 +59,7 @@
 		echo $this->Html->script($file);
 	}
 
+	echo $scripts_for_layout;
 	echo $this->Js->writeBuffer();
 	?>
 </body>

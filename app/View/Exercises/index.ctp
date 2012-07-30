@@ -1,48 +1,42 @@
-<div class="exercises index">
-	<h2><?php echo __('Exercises'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
-	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('full_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('short_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('description'); ?></th>
-			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
-	</tr>
-	<?php
-	foreach ($exercises as $exercise): ?>
-	<tr>
-		<td><?php echo h($exercise['Exercise']['id']); ?>&nbsp;</td>
-		<td><?php echo h($exercise['Exercise']['full_name']); ?>&nbsp;</td>
-		<td><?php echo h($exercise['Exercise']['short_name']); ?>&nbsp;</td>
-		<td><?php echo h($exercise['Exercise']['description']); ?>&nbsp;</td>
-		<td><?php echo h($exercise['Exercise']['created']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $exercise['Exercise']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $exercise['Exercise']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $exercise['Exercise']['id']), null, __('Are you sure you want to delete # %s?', $exercise['Exercise']['id'])); ?>
-		</td>
-	</tr>
-<?php endforeach; ?>
-	</table>
-	<p>
-	<?php
-	echo $this->Paginator->counter(array(
-	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
-	));
-	?>	</p>
+<?php
+$this->set('title_for_layout', "Exercices");
+?>
 
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
+<div class="users index">
+	<h1>Exercices</h1>
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+					<th><?php echo $this->Paginator->sort('short_name', "Nom abrégé"); ?></th>
+					<th><?php echo $this->Paginator->sort('full_name', "Nom complet"); ?></th>
+					<th class="actions"><?php echo __('Actions'); ?></th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<?php foreach ($exercises as $exercise): ?>
+			<tr>
+				<td><strong><?php echo h($exercise['Exercise']['short_name']); ?></strong>&nbsp;</td>
+				<td><?php echo h($exercise['Exercise']['full_name']); ?>&nbsp;</td>
+				<td class="actions">
+					<?php echo $this->Html->link("{$this->TB->icon('pencil', 'white')} Modifier", array('action' => 'edit', $exercise['Exercise']['id']), array('class' => 'btn btn-primary', 'escape' => false)); ?>
+					<?php echo $this->Form->postLink("{$this->TB->icon('trash', 'white')} Supprimer", array('action' => 'delete', $exercise['Exercise']['id']), array('class' => 'btn btn-danger', 'escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet exercice ?"); ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+		</tbody>
+	</table>
+	
+	<?php echo $this->element('Pagination'.DS.'numbers'); ?> 
+
+	<div class="actions">
+		<?php
+		$addIcon = $this->TB->icon('plus', 'white');
+		echo $this->Html->link("$addIcon Ajouter un exercice", array('action' => 'add'), array(
+			'class' => 'btn btn-success btn-large',
+			'escape' => false,
+		));
+		?>
 	</div>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('New Exercise'), array('action' => 'add')); ?></li>
-	</ul>
 </div>

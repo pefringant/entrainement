@@ -48,19 +48,7 @@ class Program extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Exercise' => array(
-			'className' => 'Exercise',
-			'foreignKey' => 'exercise_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
+		'Exercise',
+		'User',
 	);
 }

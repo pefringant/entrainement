@@ -1,25 +1,27 @@
+<?php $this->Html->script('daily', array('inline' => false)); ?>
+
 <div class="users daily">
 	<h1><?php echo ucfirst($this->TimePaginator->formatDate($date)); ?></h1>
-	<?php if (empty($users)): ?>
+
+	<?php if (empty($data)): ?>
 	<div class="alert">
-		<strong>Pas de programme pour <?php echo $this->TimePaginator->formatDate($date); ?></strong><br/>
+		<strong><?php echo ucfirst($this->TimePaginator->formatDate($date)); ?> : pas de programme</strong><br/>
 	</div>
-	<?php else: ?>
-	<table cellpadding="0" cellspacing="0">
-		<?php foreach ($users as $user): ?>
-		<tr>
-			<td><?php echo h($user['User']['short_name']); ?>&nbsp;</td>
-		</tr>
-		<?php endforeach; ?>
-	</table>
 	<?php endif; ?>
+
+	<ul id="usersList">
+	<?php if (!empty($data)): ?>
+		<?php foreach ($data as $row): ?>
+		<li><?php echo h($row['User']['short_name']); ?>&nbsp;</li>
+		<?php endforeach; ?>
+	<?php endif; ?>
+	</ul>
 
 	<?php
 	if (strtotime($date) >= strtotime(date('Y-m-d'))): ?>
 	<div class="actions">
 		<?php
-		$addIcon = $this->TB->icon('plus', 'white');
-		echo $this->Html->link("$addIcon Ajouter un athlète", array('action' => 'add', 'date' => $date), array(
+		echo $this->Html->link("{$this->TB->icon('plus', 'white')} Ajouter un athlète", array('controller' => 'programs', 'action' => 'add', 'date' => $date), array(
 			'class' => 'btn btn-primary',
 			'escape' => false,
 			'data-toggle' => 'modal',
@@ -29,7 +31,7 @@
 	</div>
 	<?php endif; ?>
 
-	<?php echo $this->element('time_pagination', compact('date')); ?>
+	<?php echo $this->element('Pagination'.DS.'time_pagination', compact('date')); ?>
 </div>
 
 <div class="modal hide" id="modalLayer">
@@ -39,16 +41,3 @@
 	</div>
 	<div class="modal-body" id="modalLayerBody"></div>
 </div>
-
-<?php 
-$this->Js->buffer("
-	$('#modalLayer').modal({
-		show: false
-	});
-
-	$('a[data-toggle=modal]').click(function(e) {
-		e.preventDefault();
-		$('#modalLayerBody').load($(this).attr('href'));
-	});
-");
-?>

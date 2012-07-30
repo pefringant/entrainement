@@ -7,40 +7,72 @@ App::uses('AppModel', 'Model');
 class User extends AppModel {
 /**
  * Display field
- *
  * @var string
  */
 	public $displayField = 'short_name';
 
 /**
  * hasMany associations
- * 
  * @var array
  */
 	public $hasMany = array(
-		'Program'
+		'Program',
 	);
 
+/**
+ * Behaviors
+ * @var array
+ */
+	public $actsAs = array(
+		'Upload.Upload' => array(
+			'photo' => array(
+				 'fields' => array(
+					'dir' => 'photo_dir'
+				),
+				'thumbnailSizes' => array(
+					'large' => '1024x768',
+					'medium' => '640x480',
+					'thumb' => '80x80',
+					'tiny' => '40x40'
+				),
+				'thumbnailMethod' => 'php',
+			),
+		),
+	);
+
+/**
+ * List of all users who have at least one program on $date
+ * 
+ * @param  string $date Date
+ * @return array Users with programs that day
+ */
 	public function findDaily($date) {
 		$users = $this->find('all', array(
-			'fields' => array('User.id'),
+			'fields' => array(
+				'User.id',
+			),
 			'conditions' => array(
 				'Program.effective_date' => $date,
 			),
+			'recursive' => -1,
 			'joins' => array(
 				array(
 					'table' => 'programs',
 					'alias' => 'Program',
 					'type' => 'LEFT',
-					'conditions' => array('Program.user_id = User.id'),
-				)
+					'conditions' => array(
+						'Program.user_id = User.id',
+					),
+				),
 			),
-			'recursive' => -1
+			'group' => 'User.id',
 		));
 
-		if (empty($users)) return false;
+		if (empty($users)) {
+			return false;
+		}
 
-		$users_ids = array_unique(Set::extract('/User/id', $users));
+		$users_ids = Set::extract('/User/id', $users);
 
 		$results = $this->find('all', array(
 			'conditions' => array(
@@ -48,11 +80,12 @@ class User extends AppModel {
 			),
 			'contain' => array(
 				'Program' => array(
-					'conditions' => array('Program.effective_date' => $date),
-					'Exercise'
-				)
+					'conditions' => array(
+						'Program.effective_date' => $date,
+					),
+				),
 			),
-			'order' => 'User.' . $this->displayField,
+			'order' => 'User.short_name',
 		));
 
 		return $results;
@@ -64,7 +97,7 @@ class User extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'username' => array(
+		/*'username' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'allowEmpty' => false,
@@ -72,7 +105,7 @@ class User extends AppModel {
 				'message' => "Vous devez renseigner le login",
 			),
 		),
-		/*'password' => array(
+		'password' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 			),
@@ -85,7 +118,7 @@ class User extends AppModel {
 				'message' => "Vous devez fournir une adresse email valide",
 			),
 		),
-		'fisrt_name' => array(
+		'first_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'allowEmpty' => true,
@@ -104,9 +137,9 @@ class User extends AppModel {
 		'short_name' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'allowEmpty' => true,
-				'required' => false,
-				'message' => "Vous devez renseigner le nom court ou le surnom pour l'affichage",
+				'allowEmpty' => false,
+				'required' => true,
+				'message' => "Vous devez renseigner le surnom ou le nom abrégé pour l'affichage",
 			),
 		),
 	);

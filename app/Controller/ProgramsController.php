@@ -47,14 +47,21 @@ class ProgramsController extends AppController {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
 				$this->Session->setFlash(__('The program has been saved'));
-				$this->redirect(array('action' => 'index'));
+				if ($this->request->is('ajax')) {
+					$this->set('user', $this->Program->read());
+					$this->render('add_done');
+				} else {
+					$this->redirect(array('action' => 'index'));
+				}
 			} else {
 				$this->Session->setFlash(__('The program could not be saved. Please, try again.'));
 			}
 		}
-		$exercises = $this->Program->Exercise->find('list');
+
 		$users = $this->Program->User->find('list');
-		$this->set(compact('exercises', 'users'));
+		$exercises = $this->Program->Exercise->find('list');
+
+		$this->set(compact('users', 'exercises'));
 	}
 
 /**

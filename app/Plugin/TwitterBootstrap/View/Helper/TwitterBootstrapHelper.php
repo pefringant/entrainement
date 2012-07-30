@@ -213,6 +213,7 @@ class TwitterBootstrapHelper extends AppHelper {
 	 */
 	public function input($field, $options = array()) {
 		$options = $this->_parse_input_options($field, $options);
+		$required = preg_match('/required/', $this->Form->input($options['field'], $options));
 		if (!isset($options['field'])) { return ''; }
 		$out = $help_inline = $help_block = '';
 		/*$model = $this->Form->defaultModel;
@@ -255,6 +256,9 @@ class TwitterBootstrapHelper extends AppHelper {
 		$wrap_class = "control-group";
 		if ($options["state"] !== false) {
 			$wrap_class = "{$wrap_class} {$options["state"]}";
+		}
+		if ($required) {
+			$wrap_class .= " required";
 		}
 		return $this->Html->tag(
 			"div",

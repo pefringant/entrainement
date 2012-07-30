@@ -6,30 +6,23 @@ App::uses('AppController', 'Controller');
  * @property Exercise $Exercise
  */
 class ExercisesController extends AppController {
-
+/**
+ * Pagination options
+ * @var array
+ */
+	public $paginate = array(
+		'order' => 'Exercise.short_name ASC',
+		'limit' => 20,
+		'recursive' => -1,
+	);
+	
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
-		$this->Exercise->recursive = 0;
 		$this->set('exercises', $this->paginate());
-	}
-
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Exercise->id = $id;
-		if (!$this->Exercise->exists()) {
-			throw new NotFoundException(__('Invalid exercise'));
-		}
-		$this->set('exercise', $this->Exercise->read(null, $id));
 	}
 
 /**
@@ -41,10 +34,10 @@ class ExercisesController extends AppController {
 		if ($this->request->is('post')) {
 			$this->Exercise->create();
 			if ($this->Exercise->save($this->request->data)) {
-				$this->Session->setFlash(__('The exercise has been saved'));
+				$this->Session->setFlash("Exercice enregistré.", 'alert_success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The exercise could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		}
 	}
@@ -59,14 +52,14 @@ class ExercisesController extends AppController {
 	public function edit($id = null) {
 		$this->Exercise->id = $id;
 		if (!$this->Exercise->exists()) {
-			throw new NotFoundException(__('Invalid exercise'));
+			throw new NotFoundException("Exercice introuvable");
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Exercise->save($this->request->data)) {
-				$this->Session->setFlash(__('The exercise has been saved'));
+				$this->Session->setFlash("Exercice modifié.", 'alert_success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The exercise could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		} else {
 			$this->request->data = $this->Exercise->read(null, $id);
@@ -87,13 +80,13 @@ class ExercisesController extends AppController {
 		}
 		$this->Exercise->id = $id;
 		if (!$this->Exercise->exists()) {
-			throw new NotFoundException(__('Invalid exercise'));
+			throw new NotFoundException("Exercice introuvable");
 		}
 		if ($this->Exercise->delete()) {
-			$this->Session->setFlash(__('Exercise deleted'));
+			$this->Session->setFlash("Exercice supprimé.", 'alert_success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('Exercise was not deleted'));
+		$this->Session->setFlash("Impossible de supprimer cet exercice.", 'alert_error');
 		$this->redirect(array('action' => 'index'));
 	}
 }

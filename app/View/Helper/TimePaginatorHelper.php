@@ -46,7 +46,7 @@ class TimePaginatorHelper extends AppHelper {
 				$output = "demain";
 				break;
 			default:
-				$output = strftime($this->displayPattern, strtotime($date));
+				$output = utf8_encode(strftime($this->displayPattern, strtotime($date)));
 
 		}
 

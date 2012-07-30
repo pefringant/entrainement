@@ -1,64 +1,80 @@
+<?php
+$this->set('title_for_layout', $user['User']['short_name']);
+?>
 <div class="users view">
-<h2><?php  echo __('User'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Username'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['username']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Password'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['password']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Email'); ?></dt>
-		<dd>
-			<?php echo h($user['User']['email']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('First Name'); ?></dt>
+<h1><?php echo $user['User']['short_name']; ?></h1>
+<p>Créé le <?php echo $this->Time->format('d-m-Y à H\hi', $user['User']['created']); ?></p>
+	<h2>Etat civil</h2>
+	<dl class="dl-horizontal">
+		<dt>Prénom :</dt>
 		<dd>
 			<?php echo h($user['User']['first_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Last Name'); ?></dt>
+		<dt>Nom :</dt>
 		<dd>
 			<?php echo h($user['User']['last_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Short Name'); ?></dt>
+		<dt>Surnom :</dt>
 		<dd>
 			<?php echo h($user['User']['short_name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Birth'); ?></dt>
+		<?php if (!empty($user['User']['gender'])): ?>
+		<dt>Genre :</dt>
 		<dd>
-			<?php echo h($user['User']['birth']); ?>
+			<?php echo $user['User']['gender'] == 'M' ? "Homme" : "Femme"; ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Photo'); ?></dt>
+		<?php endif; ?>
+		<dt>Né(e) le :</dt>
 		<dd>
-			<?php echo h($user['User']['photo']); ?>
+			<?php echo $this->TimePaginator->formatDate($user['User']['birth']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Created'); ?></dt>
+		<dt>Photo :</dt>
 		<dd>
-			<?php echo h($user['User']['created']); ?>
+			<?php echo $this->Users->photo($user, 'thumb'); ?>
 			&nbsp;
 		</dd>
 	</dl>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit User'), array('action' => 'edit', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete User'), array('action' => 'delete', $user['User']['id']), null, __('Are you sure you want to delete # %s?', $user['User']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('action' => 'add')); ?> </li>
-	</ul>
+
+	<h2>Informations de connexion</h2>
+	<dl class="dl-horizontal">
+		<dt>Email :</dt>
+		<dd>
+			<?php echo h($user['User']['email']); ?>
+			&nbsp;
+		</dd>
+		<dt>Login :</dt>
+		<dd>
+			<?php echo h($user['User']['username']); ?>
+			&nbsp;
+		</dd>
+		<dt>Mot de passe :</dt>
+		<dd>
+			(secret)
+			&nbsp;
+		</dd>
+	</dl>
+
+	<div class="form-actions">
+		<?php
+		echo $this->Html->link("{$this->TB->icon('pencil', 'white')} Modifier", array('action' => 'edit', $user['User']['id']), array(
+			'class' => 'btn btn-primary',
+			'escape' => false,
+		));
+		?> 
+		<?php echo $this->Form->postLink("{$this->TB->icon('trash', 'white')} Supprimer", array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger', 'escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet athlète ?"); ?> 
+	</div>
+
+	<div class="actions">
+		<?php
+		echo $this->Html->link("{$this->TB->icon('list')} Liste des athlètes", array('action' => 'index'), array(
+			'class' => 'btn btn-large',
+			'escape' => false,
+		));
+		?>
+	</div>
 </div>

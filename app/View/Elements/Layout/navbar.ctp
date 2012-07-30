@@ -1,6 +1,6 @@
 <?php
 $mainNav = array(
-	"Aujourd'hui" => array('plugin'=>null, 'controller'=>'users', 'action'=>'daily'),
+	"Programmes" => array('plugin'=>null, 'controller'=>'users', 'action'=>'daily'),
 	"Athlètes" => array('plugin'=>null, 'controller'=>'users', 'action'=>'index'),
 	"Exercices" => array('plugin'=>null, 'controller'=>'exercises', 'action'=>'index'),
 );

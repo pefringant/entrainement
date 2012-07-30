@@ -7,6 +7,16 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 /**
+ * Pagination options
+ * @var array
+ */
+	public $paginate = array(
+		'order' => 'User.short_name ASC',
+		'limit' => 20,
+		'recursive' => -1,
+	);
+
+/**
  * Users with at least one program on that day
  * 
  * @param  string $date Y-m-d Date
@@ -17,9 +27,11 @@ class UsersController extends AppController {
 			$date = date('Y-m-d');
 		}
 
-		$users = $this->User->findDaily($date);
+		$data = $this->User->findDaily($date);
+		$users = $this->User->find('list');
+		$exercises = $this->User->Program->Exercise->find('list');
 
-		$this->set(compact('date', 'users'));
+		$this->set(compact('date', 'data', 'users', 'exercises'));
 	}
 
 /**
@@ -28,7 +40,6 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
 	}
 
@@ -42,7 +53,7 @@ class UsersController extends AppController {
 	public function view($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException("Athlète introuvable");
 		}
 		$this->set('user', $this->User->read(null, $id));
 	}
@@ -56,10 +67,10 @@ class UsersController extends AppController {
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash("Athlète enregistré.", 'alert_success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		}
 	}
@@ -74,14 +85,14 @@ class UsersController extends AppController {
 	public function edit($id = null) {
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException("Athlète introuvable");
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash("Athlète modifié.", 'alert_success');
 				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		} else {
 			$this->request->data = $this->User->read(null, $id);
@@ -102,13 +113,13 @@ class UsersController extends AppController {
 		}
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
-			throw new NotFoundException(__('Invalid user'));
+			throw new NotFoundException("Athlète introuvable");
 		}
 		if ($this->User->delete()) {
-			$this->Session->setFlash(__('User deleted'));
+			$this->Session->setFlash("Athlète supprimé.", 'alert_success');
 			$this->redirect(array('action' => 'index'));
 		}
-		$this->Session->setFlash(__('User was not deleted'));
+		$this->Session->setFlash("Impossible de supprimer cet athlète.", 'alert_error');
 		$this->redirect(array('action' => 'index'));
 	}
 }
