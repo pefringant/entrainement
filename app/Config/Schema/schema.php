@@ -27,7 +27,6 @@ class AppSchema extends CakeSchema {
 		'sets' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'reps' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'stop' => array('type' => 'boolean', 'null' => true, 'default' => null),
 		'break' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(

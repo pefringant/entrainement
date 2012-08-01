@@ -6,3 +6,16 @@ label {
 		background: url('/img/required.png') no-repeat top right;
 	}
 }
+
+#modalLayer form {
+	margin-bottom: 0;
+	select, input {
+		margin: 4px;
+	}
+	.form-error {
+		border: 1px red solid;
+	}
+	.error-message {
+		display: none;
+	}
+}

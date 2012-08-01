@@ -1,31 +1,198 @@
-/* line 1, D:/Sites/entrainement/app/sass/partials/_layout.scss */
+/* line 1, ../../sass/partials/_layout.scss */
 body {
   padding-top: 60px;
   padding-bottom: 40px;
 }
 
-/* line 6, D:/Sites/entrainement/app/sass/partials/_layout.scss */
+/* line 6, ../../sass/partials/_layout.scss */
 h1 {
   margin-bottom: 16px;
 }
 
-/* line 1, D:/Sites/entrainement/app/sass/partials/_typography.scss */
+/* line 1, ../../sass/partials/_typography.scss */
+body {
+  font-family: "Segoe UI", Verdana, sans-serif;
+}
+
+/* line 4, ../../sass/partials/_typography.scss */
 dd, dt {
   min-height: 24px;
 }
 
-/* line 1, D:/Sites/entrainement/app/sass/partials/_forms.scss */
+/* line 1, ../../sass/partials/_forms.scss */
 label {
   padding-right: 8px;
 }
 
-/* line 5, D:/Sites/entrainement/app/sass/partials/_forms.scss */
+/* line 5, ../../sass/partials/_forms.scss */
 .required label {
   background: url("/img/required.png") no-repeat top right;
 }
 
-/* line 1, D:/Sites/entrainement/app/sass/partials/_pagination.scss */
+/* line 10, ../../sass/partials/_forms.scss */
+#modalLayer form {
+  margin-bottom: 0;
+}
+/* line 12, ../../sass/partials/_forms.scss */
+#modalLayer form select, #modalLayer form input {
+  margin: 4px;
+}
+/* line 15, ../../sass/partials/_forms.scss */
+#modalLayer form .form-error {
+  border: 1px red solid;
+}
+/* line 18, ../../sass/partials/_forms.scss */
+#modalLayer form .error-message {
+  display: none;
+}
+
+/* line 1, ../../sass/partials/_pagination.scss */
 .pagination-counter {
   font-size: 12px;
   color: #666;
+}
+
+/* line 1, ../../sass/partials/_content.scss */
+#daily-header {
+  overflow: hidden;
+}
+/* line 3, ../../sass/partials/_content.scss */
+#daily-header h1, #daily-header .actions {
+  float: left;
+}
+/* line 6, ../../sass/partials/_content.scss */
+#daily-header .actions {
+  margin-top: 4px;
+  margin-left: 10px;
+}
+
+/* line 12, ../../sass/partials/_content.scss */
+.user-photo-default {
+  width: 24px;
+  height: 24px;
+  background: #999;
+}
+/* line 16, ../../sass/partials/_content.scss */
+.user-photo-default i {
+  margin: 5px;
+}
+
+/* line 21, ../../sass/partials/_content.scss */
+#usersList {
+  width: 100%;
+}
+
+/* line 24, ../../sass/partials/_content.scss */
+.user-program {
+  display: block;
+  width: 300px;
+  float: left;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px #eeeeee;
+  -moz-box-shadow: 1px 1px 5px #eeeeee;
+  box-shadow: 1px 1px 5px #eeeeee;
+}
+
+/* line 34, ../../sass/partials/_content.scss */
+.user-program-header {
+  overflow: hidden;
+  padding: 8px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(#eeeeee, #dddddd);
+  background-image: -moz-linear-gradient(#eeeeee, #dddddd);
+  background-image: -o-linear-gradient(#eeeeee, #dddddd);
+  background-image: linear-gradient(#eeeeee, #dddddd);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #bbb;
+}
+/* line 41, ../../sass/partials/_content.scss */
+.user-program-header h3 {
+  float: left;
+  margin-left: 10px;
+}
+/* line 44, ../../sass/partials/_content.scss */
+.user-program-header h3 a {
+  text-shadow: 0px 1px 1px #fff;
+  color: #444;
+}
+/* line 47, ../../sass/partials/_content.scss */
+.user-program-header h3 a:hover {
+  text-decoration: none;
+}
+/* line 52, ../../sass/partials/_content.scss */
+.user-program-header .user-program-remove {
+  float: right;
+  margin: 4px;
+}
+
+/* line 59, ../../sass/partials/_content.scss */
+.user-program-body {
+  border-top: 2px solid #f0f0f0;
+}
+/* line 61, ../../sass/partials/_content.scss */
+.user-program-body .table {
+  margin-bottom: 0;
+}
+/* line 63, ../../sass/partials/_content.scss */
+.user-program-body .table th {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+}
+/* line 68, ../../sass/partials/_content.scss */
+.user-program-body .table td {
+  font-size: 14px;
+}
+/* line 70, ../../sass/partials/_content.scss */
+.user-program-body .table td a:hover {
+  text-decoration: none;
+}
+/* line 74, ../../sass/partials/_content.scss */
+.user-program-body .table a[rel=popover] {
+  font-weight: bold;
+}
+
+/* line 79, ../../sass/partials/_content.scss */
+.user-program-actions {
+  width: 35px;
+}
+
+/* line 82, ../../sass/partials/_content.scss */
+.user-program-photo {
+  float: left;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #fff;
+  -webkit-box-shadow: 1px 1px 3px #aaaaaa;
+  -moz-box-shadow: 1px 1px 3px #aaaaaa;
+  box-shadow: 1px 1px 3px #aaaaaa;
+}
+
+/* line 90, ../../sass/partials/_content.scss */
+.user-program-footer {
+  padding: 8px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #f3f3f3));
+  background-image: -webkit-linear-gradient(#dddddd, #f3f3f3);
+  background-image: -moz-linear-gradient(#dddddd, #f3f3f3);
+  background-image: -o-linear-gradient(#dddddd, #f3f3f3);
+  background-image: linear-gradient(#dddddd, #f3f3f3);
+  border-top: 1px solid #ccc;
 }

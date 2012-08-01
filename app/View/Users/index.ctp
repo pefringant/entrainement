@@ -19,7 +19,11 @@ $this->set('title_for_layout', "Athlètes");
 		<tbody>
 		<?php foreach ($users as $user): ?>
 			<tr>
-				<td><?php echo $this->Users->photo($user, 'tiny'); ?> </td>
+				<td>
+					<div class="user-program-photo">
+						<?php echo $this->Users->photo($user, 'tiny'); ?>
+					</div>
+				</td>
 				<td><strong><?php echo h($user['User']['short_name']); ?></strong>&nbsp;</td>
 				<td><?php echo h($user['User']['first_name']); ?>&nbsp;</td>
 				<td><?php echo h($user['User']['last_name']); ?>&nbsp;</td>

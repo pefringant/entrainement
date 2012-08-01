@@ -1,0 +1,95 @@
+#daily-header {
+	overflow: hidden;
+	h1, .actions {
+		float: left;
+	}
+	.actions {
+		margin-top: 4px;
+		margin-left: 10px;
+	}
+}
+
+.user-photo-default {
+	width: 24px;
+	height: 24px;
+	background: #999;
+	i {
+		margin: 5px;
+	}
+}
+
+#usersList {
+	width: 100%;
+}
+.user-program {
+	display: block;
+	width: 300px;
+	float: left;
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	@include border-radius(5px);
+	@include single-box-shadow(#eee, 1px, 1px, 5px);
+}
+
+.user-program-header {
+	overflow: hidden;
+	padding: 8px;
+	@include border-top-radius(5px);
+	@include background-image(linear-gradient(#eee, #ddd));
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #bbb;
+	h3 {
+		float: left;
+		margin-left: 10px;
+		a {
+			text-shadow: 0px 1px 1px #fff;
+			color: #444;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	.user-program-remove {
+		float: right;
+		margin: 4px;
+	}
+}
+
+
+.user-program-body {
+	border-top: 2px solid #f0f0f0;
+	.table {
+		margin-bottom: 0;
+		th {
+			font-size: 12px;
+			font-weight: normal;
+			color: #999;
+		}
+		td {
+			font-size: 14px;
+			a:hover {
+				text-decoration: none;
+			}
+		}
+		a[rel=popover] {
+			font-weight: bold;
+		}
+	}
+}
+.user-program-actions {
+	width: 35px;
+}
+.user-program-photo {
+	float: left;
+	width: 24px;
+	height: 24px;
+	border: 1px solid #fff;
+	@include single-box-shadow(#aaa, 1px, 1px, 3px);
+}
+
+.user-program-footer {
+	padding: 8px;
+	@include border-bottom-radius(5px);
+	@include background-image(linear-gradient(#ddd, #f3f3f3));
+	border-top: 1px solid #ccc;
+}

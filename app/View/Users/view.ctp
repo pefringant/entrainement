@@ -28,7 +28,7 @@ $this->set('title_for_layout', $user['User']['short_name']);
 			&nbsp;
 		</dd>
 		<?php endif; ?>
-		<dt>Né(e) le :</dt>
+		<dt>Né<?php if ($user['User']['gender'] == 'F') echo "e"; ?> le :</dt>
 		<dd>
 			<?php echo $this->TimePaginator->formatDate($user['User']['birth']); ?>
 			&nbsp;

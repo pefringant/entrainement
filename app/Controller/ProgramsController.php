@@ -42,53 +42,68 @@ class ProgramsController extends AppController {
 		if ($this->request->is('ajax')) {
 			$this->viewPath .= DS . 'ajax';
 		}
-
 		if ($this->request->is('post')) {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
-				$this->Session->setFlash(__('The program has been saved'));
+				$this->Session->setFlash("Programme enregistré.", 'alert_success');
 				if ($this->request->is('ajax')) {
-					$this->set('user', $this->Program->read());
-					$this->render('add_done');
+					$this->Program->contain(array('Exercise'));
+					$newProgram = $this->Program->read();
+					$this->set('newProgram', $newProgram);
+					$newUser = $this->Program->User->findUserDaily($newProgram['Program']['effective_date'], $newProgram['Program']['user_id']);
+					if (count($newUser['Program']) == 1) {
+						$this->set('newUser', $newUser);
+					}
 				} else {
-					$this->redirect(array('action' => 'index'));
+					$this->redirect(array('action' => 'index', $this->passedArgs['date']));
 				}
 			} else {
-				$this->Session->setFlash(__('The program could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		}
-
-		$users = $this->Program->User->find('list');
-		$exercises = $this->Program->Exercise->find('list');
-
-		$this->set(compact('users', 'exercises'));
+		$this->set('users', $this->Program->User->find('list'));
+		$this->set('exercises', $this->Program->Exercise->find('list'));
+		$this->set('date', $this->passedArgs['date']);
+		if (!empty($newUser)) {
+			$this->set('user', $newUser);
+		} elseif (!empty($this->passedArgs['user'])) {
+			$this->Program->User->id = $this->passedArgs['user'];
+			$this->Program->User->recursive = -1;
+			$this->set('user', $this->Program->User->read());
+		}
 	}
 
 /**
- * edit method
+ * add method
  *
- * @throws NotFoundException
- * @param string $id
  * @return void
  */
 	public function edit($id = null) {
+		if ($this->request->is('ajax')) {
+			$this->viewPath .= DS . 'ajax';
+		}
 		$this->Program->id = $id;
 		if (!$this->Program->exists()) {
-			throw new NotFoundException(__('Invalid program'));
+			throw new NotFoundException("Programme introuvable");
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Program->save($this->request->data)) {
-				$this->Session->setFlash(__('The program has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->Session->setFlash("Modifications enregistrées.", 'alert_success');
+				if ($this->request->is('ajax')) {
+					$this->Program->contain(array('User', 'Exercise'));
+					$updatedProgram = $this->Program->read();
+					$this->set('updatedProgram', $updatedProgram);
+				} else {
+					$this->redirect(array('action' => 'index', $this->passedArgs['date']));
+				}
 			} else {
-				$this->Session->setFlash(__('The program could not be saved. Please, try again.'));
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		} else {
+			$this->Program->contain(array('User'));
 			$this->request->data = $this->Program->read(null, $id);
 		}
-		$exercises = $this->Program->Exercise->find('list');
-		$users = $this->Program->User->find('list');
-		$this->set(compact('exercises', 'users'));
+		$this->set('exercises', $this->Program->Exercise->find('list'));
 	}
 
 /**
@@ -104,14 +119,33 @@ class ProgramsController extends AppController {
 			throw new MethodNotAllowedException();
 		}
 		$this->Program->id = $id;
-		if (!$this->Program->exists()) {
+		if (!$program = $this->Program->read()) {
 			throw new NotFoundException(__('Invalid program'));
 		}
+		$date = $program['Program']['effective_date'];
 		if ($this->Program->delete()) {
-			$this->Session->setFlash(__('Program deleted'));
-			$this->redirect(array('action' => 'index'));
+			//$this->Session->setFlash("Exercice supprimé.", 'alert_success');
+		} else {
+			$this->Session->setFlash("Impossible de supprimer l'exerice.", 'alert_error');
 		}
-		$this->Session->setFlash(__('Program was not deleted'));
-		$this->redirect(array('action' => 'index'));
+		$this->redirect(array('controller' => 'users', 'action' => 'daily', $date));
+	}
+
+/**
+ * Delete all user exercises on $date
+ * 
+ * @param  int $user_id User ID
+ * @param  string $date Y-m-d date
+ * @return void
+ */
+	public function delete_user($user_id, $date) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
+		}
+		$this->Program->deleteAll(array(
+			'Program.user_id' => $user_id,
+			'Program.effective_date' => $date
+		));
+		$this->redirect(array('controller' => 'users', 'action' => 'daily', $date));
 	}
 }

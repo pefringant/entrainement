@@ -9,7 +9,7 @@ class UsersHelper extends AppHelper {
  * Other helpers required
  * @var array
  */
-	public $helpers = array('Html');
+	public $helpers = array('Html', 'TB');
 
 /**
  * Return User photo <img>
@@ -19,8 +19,17 @@ class UsersHelper extends AppHelper {
  * @return <img> for User photo
  */
 	public function photo($user, $size = '') {
+		$default = false;
+
+		if ($size == 'tiny') {
+			$default = $this->Html->tag('div', $this->TB->icon('user', 'white'), array(
+				'class' => 'user-photo-default'
+			));
+			$default = $this->wrap($default);
+		}
+
 		if (!isset($user['User']['photo']) || !isset($user['User']['photo_dir'])) {
-			return false;
+			return $default;
 		}
 
 		if ($size) {
@@ -32,9 +41,13 @@ class UsersHelper extends AppHelper {
 		$path = 'files/user/photo/'.$user['User']['photo_dir'].'/'.$file;
 
 		if (!is_file($path)) {
-			return false;
+			return $default;
 		}
 
-		return $this->Html->image('/'.$path);
+		return $this->wrap($this->Html->image('/'.$path));
+	}
+
+	private function wrap($img) {
+		return $this->Html->tag('div', $img, array('class' => 'user-photo'));
 	}
 }

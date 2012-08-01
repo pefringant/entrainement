@@ -1,7 +1,32 @@
-<?php $this->Html->script('daily', array('inline' => false)); ?>
+<?php
+$this->set('title_for_layout', ucfirst($this->TimePaginator->formatDate($date)));
+
+$this->Html->script('jquery.masonry.min', array('inline' => false));
+$this->Html->script('daily', array('inline' => false));
+
+$usersByRow = 5;
+?>
 
 <div class="users daily">
-	<h1><?php echo ucfirst($this->TimePaginator->formatDate($date)); ?></h1>
+	<div id="daily-header">
+		<h1><?php echo ucfirst($this->TimePaginator->formatDate($date)); ?></h1>
+		<?php
+		if (strtotime($date) >= strtotime(date('Y-m-d'))): ?>
+		<div class="actions">
+			<?php
+			echo $this->Html->link(
+				"{$this->TB->icon('plus', 'white')} Ajouter un athlète", 
+				array('controller' => 'programs', 'action' => 'add', 'date' => $date), 
+					array(
+					'class' => 'btn btn-primary',
+					'escape' => false,
+					'data-toggle' => 'modal',
+					'data-target' => '#modalLayer'
+				)
+			); ?>
+		</div>
+		<?php endif; ?>
+	</div>
 
 	<?php if (empty($data)): ?>
 	<div class="alert">
@@ -9,35 +34,16 @@
 	</div>
 	<?php endif; ?>
 
-	<ul id="usersList">
-	<?php if (!empty($data)): ?>
-		<?php foreach ($data as $row): ?>
-		<li><?php echo h($row['User']['short_name']); ?>&nbsp;</li>
-		<?php endforeach; ?>
-	<?php endif; ?>
-	</ul>
-
-	<?php
-	if (strtotime($date) >= strtotime(date('Y-m-d'))): ?>
-	<div class="actions">
-		<?php
-		echo $this->Html->link("{$this->TB->icon('plus', 'white')} Ajouter un athlète", array('controller' => 'programs', 'action' => 'add', 'date' => $date), array(
-			'class' => 'btn btn-primary',
-			'escape' => false,
-			'data-toggle' => 'modal',
-			'data-target' => '#modalLayer'
-		));
-		?>
+	<div id="usersList">
+		<?php if (!empty($data)) {
+			foreach ($data as $i => $row) {
+				$popoverPlacement = ($i % 5 <= 2) ? 'right' : 'left';
+				echo $this->element('Users'.DS.'program', array('user' => $row, 'date' => $date, 'popoverPlacement' => $popoverPlacement));
+			}
+		} ?>
 	</div>
-	<?php endif; ?>
 
 	<?php echo $this->element('Pagination'.DS.'time_pagination', compact('date')); ?>
 </div>
 
-<div class="modal hide" id="modalLayer">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">×</button>
-		<h3>Exercice</h3>
-	</div>
-	<div class="modal-body" id="modalLayerBody"></div>
-</div>
+<div class="modal hide" id="modalLayer"></div>

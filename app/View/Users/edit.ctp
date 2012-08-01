@@ -54,6 +54,7 @@ $this->set('title_for_layout', "Modifier un athlète");
 		<legend>Informations de connexion</legend>
 		<?php echo $this->TB->input('email', array(
 			'label' => "Email :",
+			'type' => 'email'
 		)); ?> 
 		<?php echo $this->TB->input('username', array(
 			'label' => "Login :",

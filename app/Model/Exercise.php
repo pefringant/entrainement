@@ -13,6 +13,21 @@ class Exercise extends AppModel {
 	public $displayField = 'short_name';
 
 /**
+ * beforeSave callback : populate short_name with full_name if empty
+ * 
+ * @return boolean True
+ */
+	public function beforeSave() {
+		parent::beforeSave();
+
+		if (empty($this->data[$this->alias]['short_name'])) {
+			$this->data[$this->alias]['short_name'] = $this->data[$this->alias]['full_name'];
+		}
+
+		return true;
+	}
+
+/**
  * Validation rules
  *
  * @var array

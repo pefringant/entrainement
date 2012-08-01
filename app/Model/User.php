@@ -11,6 +11,10 @@ class User extends AppModel {
  */
 	public $displayField = 'short_name';
 
+	public $virtualFields = array(
+		'full_name' => 'CONCAT(User.first_name, " ", User.last_name)',
+	);
+
 /**
  * hasMany associations
  * @var array
@@ -33,7 +37,7 @@ class User extends AppModel {
 					'large' => '1024x768',
 					'medium' => '640x480',
 					'thumb' => '80x80',
-					'tiny' => '40x40'
+					'tiny' => '24x24'
 				),
 				'thumbnailMethod' => 'php',
 			),
@@ -83,12 +87,38 @@ class User extends AppModel {
 					'conditions' => array(
 						'Program.effective_date' => $date,
 					),
+					'order' => 'Program.id ASC',
+					'Exercise',
 				),
 			),
 			'order' => 'User.short_name',
 		));
 
 		return $results;
+	}
+
+/**
+ * Find one user and his program on one date
+ * 
+ * @param  string $date Date
+ * @param  int $user_id User id
+ * @return array User and his programs that day
+ */
+	public function findUserDaily($date, $user_id) {
+		return $this->find('first', array(
+			'conditions' => array(
+				'User.id' => $user_id,
+			),
+			'contain' => array(
+				'Program' => array(
+					'conditions' => array(
+						'Program.effective_date' => $date,
+					),
+					'order' => 'Program.id ASC',
+					'Exercise',
+				),
+			),
+		));
 	}
 
 /**

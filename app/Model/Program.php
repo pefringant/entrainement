@@ -16,11 +16,13 @@ class Program extends AppModel {
 		'exercise_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
+				'message' => "Vous devez choisir un exercice."
 			),
 		),
 		'user_id' => array(
 			'numeric' => array(
 				'rule' => array('numeric'),
+				'message' => "Vous devez choisir un athlète."
 			),
 		),
 		'effective_date' => array(
@@ -33,11 +35,6 @@ class Program extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'sets' => array(
-			'rule' => 'notEmpty',
-			'required' => true,
-			'message' => 'PAS VIDE'
-		)
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
