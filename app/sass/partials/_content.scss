@@ -4,7 +4,7 @@
 		float: left;
 	}
 	.actions {
-		margin-top: 4px;
+		margin-top: 6px;
 		margin-left: 10px;
 	}
 }
@@ -44,9 +44,6 @@
 		a {
 			text-shadow: 0px 1px 1px #fff;
 			color: #444;
-			&:hover {
-				text-decoration: none;
-			}
 		}
 	}
 	.user-program-remove {

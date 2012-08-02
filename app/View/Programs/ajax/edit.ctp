@@ -46,9 +46,9 @@ echo $this->Form->input('id');
 </div>
 
 <div class="modal-footer">
-	<?php echo $this->Js->submit("Valider", array(
+	<?php echo $this->Js->submit("Enregistrer", array(
 		'update' => '#modalLayer',
-		'class' => 'btn btn-success',
+		'class' => 'btn btn-success btn-large',
 	)); ?>
 </div>
 

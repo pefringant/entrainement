@@ -18,22 +18,6 @@ $(document).ready(function() {
 	});
 
 /**
- * Tooltips on user names
- */
-	$('.user-program-header').tooltip({
-		selector: 'a[rel=tooltip]',
-		placement: 'right'
-	});
-
-/**
- * Tooltips on action buttons
- */
-	$('.user-program-body').tooltip({
-		selector: 'a[rel=tooltip]',
-		placement: 'top'
-	});
-
-/**
  * Popovers
  */
 	$('#usersList').popover({

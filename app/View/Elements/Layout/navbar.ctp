@@ -18,7 +18,12 @@ $mainNav = array(
 
 			<?php echo $this->Html->link("Caen Saint Jean-Eudes", '/', array('class' => 'brand')); ?> 
 			
-			<div class="nav-collapse">
+			<form method="post" action="<?php echo $this->Html->url(array('controller' => 'users', 'action' => 'daily')); ?>" class="navbar-form pull-left">
+				<input type="date" name="date" value="<?php echo (empty($date)) ? date('Y-m-d') : $date; ?>" class="input-medium">
+				<input type="submit" value="Voir les programmes" class="btn btn-primary">
+			</form>
+
+			<div class="nav-collapse pull-right">
 				<ul class="nav">
 					<?php foreach ($mainNav as $label => $url): ?>
 					<li<?php if ($this->request->controller == $url['controller'] && $this->request->action == $url['action']) echo ' class="active"'; ?>>
@@ -27,6 +32,8 @@ $mainNav = array(
 					<?php endforeach; ?> 
 				</ul>
 			</div>
+
+			
 		</div>
 	</div>
 </div>

@@ -15,6 +15,7 @@ if (!empty($newProgram)) {
 		");
 	}
 	$this->Js->buffer("
+		$('.daily .alert').alert('close');
 		$('#usersList').masonry('reload');
 	");
 }
@@ -61,9 +62,9 @@ if (!empty($user)) {
 </div>
 
 <div class="modal-footer">
-	<?php echo $this->Js->submit("Valider", array(
+	<?php echo $this->Js->submit("Enregistrer", array(
 		'update' => '#modalLayer',
-		'class' => 'btn btn-success',
+		'class' => 'btn btn-success btn-large',
 	)); ?>
 </div>
 

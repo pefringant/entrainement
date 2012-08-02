@@ -73,9 +73,27 @@ class ProgramsController extends AppController {
 		}
 	}
 
+	public function user_programs($user_id = null) {
+		if ($this->request->is('post')) {
+			$this->Program->create();
+			if ($this->Program->save($this->request->data)) {
+				$this->Session->setFlash("Programme enregistré.", 'alert_success');
+				$this->redirect(array($user_id));
+			} else {
+				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
+			}
+		}
+
+		$this->Program->User->id = $user_id;
+		$this->set('user', $this->Program->User->read());
+		$this->set('programs', $this->Program->findUserPrograms($user_id));
+		$this->set('exercises', $this->Program->Exercise->find('list'));
+	}
+
 /**
- * add method
+ * edit method
  *
+ * @param int Program Id
  * @return void
  */
 	public function edit($id = null) {
@@ -94,7 +112,7 @@ class ProgramsController extends AppController {
 					$updatedProgram = $this->Program->read();
 					$this->set('updatedProgram', $updatedProgram);
 				} else {
-					$this->redirect(array('action' => 'index', $this->passedArgs['date']));
+					$this->redirect(array('action' => 'user_programs', $this->request->data['Program']['user_id']));
 				}
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
@@ -124,11 +142,13 @@ class ProgramsController extends AppController {
 		}
 		$date = $program['Program']['effective_date'];
 		if ($this->Program->delete()) {
-			//$this->Session->setFlash("Exercice supprimé.", 'alert_success');
+			if (!$this->request->is('ajax')) {
+				$this->Session->setFlash("Exercice supprimé.", 'alert_success');
+			}
 		} else {
 			$this->Session->setFlash("Impossible de supprimer l'exerice.", 'alert_error');
 		}
-		$this->redirect(array('controller' => 'users', 'action' => 'daily', $date));
+		$this->redirect($this->referer());
 	}
 
 /**
@@ -146,6 +166,6 @@ class ProgramsController extends AppController {
 			'Program.user_id' => $user_id,
 			'Program.effective_date' => $date
 		));
-		$this->redirect(array('controller' => 'users', 'action' => 'daily', $date));
+		$this->redirect($this->referer());
 	}
 }

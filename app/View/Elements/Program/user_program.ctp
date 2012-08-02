@@ -58,7 +58,6 @@ $label = $this->Html->link($label, array('controller' => 'programs', 'action' =>
 			$this->TB->icon('pencil'), 
 			array('controller' => 'programs', 'action' => 'edit', $program['Program']['id']), 
 			array(
-				'rel' => 'tooltip',
 				'title' => "Modifier l'exercice",
 				'escape' => false,
 				'data-toggle' => 'modal',
@@ -69,7 +68,6 @@ $label = $this->Html->link($label, array('controller' => 'programs', 'action' =>
 			$this->TB->icon('trash'), 
 			array('controller' => 'programs', 'action' => 'delete', $program['Program']['id']), 
 			array(
-				'rel' => 'tooltip',
 				'title' => "Supprimer l'exercice",
 				'escape' => false,
 			),

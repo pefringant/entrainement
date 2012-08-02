@@ -23,15 +23,22 @@ class UsersController extends AppController {
  * @return array Users and their program for that day
  */
 	public function daily($date = null) {
+		// PRG redirect
+		if ($this->request->is('post')) {
+			if (!empty($this->request->data['date'])) {
+				$date = $this->request->data['date'];
+			} else {
+				$date = date('Y-m-d');
+			}
+			$this->redirect(array($date));
+		}
+
 		if (empty($date) || !preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
 			$date = date('Y-m-d');
 		}
-
-		$data = $this->User->findDaily($date);
-		$users = $this->User->find('list');
-		$exercises = $this->User->Program->Exercise->find('list');
-
-		$this->set(compact('date', 'data', 'users', 'exercises'));
+		$this->set('date', $date);
+		$users = $this->User->findDaily($date);
+		$this->set('users', $users);
 	}
 
 /**

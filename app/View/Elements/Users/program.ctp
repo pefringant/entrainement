@@ -5,9 +5,8 @@
 		</div>
 		<h3><?php echo $this->Html->link(
 			$user['User']['short_name'], 
-			array('controller' => 'users', 'action' => 'edit', $user['User']['id']),
+			array('controller' => 'programs', 'action' => 'user_programs', $user['User']['id']),
 			array(
-				'rel' => 'tooltip',
 				'title' => $user['User']['full_name']
 			)
 		); ?></h3>

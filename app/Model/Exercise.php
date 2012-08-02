@@ -14,11 +14,12 @@ class Exercise extends AppModel {
 
 /**
  * beforeSave callback : populate short_name with full_name if empty
- * 
+ *
+ * @param array Options
  * @return boolean True
  */
-	public function beforeSave() {
-		parent::beforeSave();
+	public function beforeSave($options = array()) {
+		parent::beforeSave($options);
 
 		if (empty($this->data[$this->alias]['short_name'])) {
 			$this->data[$this->alias]['short_name'] = $this->data[$this->alias]['full_name'];

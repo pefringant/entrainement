@@ -28,10 +28,9 @@ $this->set('title_for_layout', "Athlètes");
 				<td><?php echo h($user['User']['first_name']); ?>&nbsp;</td>
 				<td><?php echo h($user['User']['last_name']); ?>&nbsp;</td>
 				<td class="actions">
-					<?php echo $this->Html->link("{$this->TB->icon('zoom-in', 'white')} Détails", array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-info', 'escape' => false)); ?>
-					<?php
-					
-					echo $this->Html->link("{$this->TB->icon('pencil', 'white')} Modifier", array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-primary', 'escape' => false)); ?>
+					<?php echo $this->Html->link("{$this->TB->icon('calendar', 'white')} Programme", array('controller' => 'programs', 'action' => 'user_programs', $user['User']['id']), array('class' => 'btn btn-info', 'escape' => false)); ?>
+					<?php /*echo $this->Html->link("{$this->TB->icon('zoom-in', 'white')} Détails", array('action' => 'view', $user['User']['id']), array('class' => 'btn btn-info', 'escape' => false));*/ ?>
+					<?php echo $this->Html->link("{$this->TB->icon('pencil', 'white')} Modifier", array('action' => 'edit', $user['User']['id']), array('class' => 'btn btn-primary', 'escape' => false)); ?>
 					<?php echo $this->Form->postLink("{$this->TB->icon('trash', 'white')} Supprimer", array('action' => 'delete', $user['User']['id']), array('class' => 'btn btn-danger', 'escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet athlète ?"); ?>
 				</td>
 			</tr>
