@@ -61,7 +61,7 @@ class Program extends AppModel {
 				'Program.effective_date >= CURDATE()',
 				'Program.user_id' => $user_id,
 			),
-			'order' => 'Program.effective_date ASC',
+			'order' => 'Program.effective_date ASC, Program.id ASC',
 			'contain' => array('Exercise'),
 		));
 	}
@@ -78,7 +78,7 @@ class Program extends AppModel {
 				'Program.effective_date < CURDATE()',
 				'Program.user_id' => $user_id,
 			),
-			//'order' => 'Program.effective_date ASC',
+			'order' => 'Program.effective_date DESC, Program.id ASC',
 			'contain' => array('Exercise'),
 		));
 	}

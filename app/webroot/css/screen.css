@@ -14,9 +14,9 @@ body, input {
   font-family: "Segoe UI", Verdana, sans-serif;
 }
 
-/* line 4, ../../sass/partials/_typography.scss */
+/* line 5, ../../sass/partials/_typography.scss */
 dd, dt {
-  min-height: 24px;
+  padding: 4px;
 }
 
 /* line 1, ../../sass/partials/_forms.scss */
@@ -196,4 +196,20 @@ label {
   background-image: -o-linear-gradient(#dddddd, #f3f3f3);
   background-image: linear-gradient(#dddddd, #f3f3f3);
   border-top: 1px solid #ccc;
+}
+
+/* line 94, ../../sass/partials/_content.scss */
+.dd-hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+/* line 99, ../../sass/partials/_content.scss */
+dd.last-update {
+  background: #DFF0D8;
+}
+
+/* line 103, ../../sass/partials/_content.scss */
+.table-striped tbody tr.last-update td {
+  background: #DFF0D8;
 }

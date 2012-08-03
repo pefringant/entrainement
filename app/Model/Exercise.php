@@ -39,7 +39,11 @@ class Exercise extends AppModel {
 				'rule' => array('notempty'),
 				'required' => true,
 				'allowEmpty' => false,
-				'message' => "Vous devez renseigner le nom complet de l'exercice",
+				'message' => "Vous devez renseigner le nom complet de l'exercice.",
+			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => "Cet exercice existe déjà.",
 			),
 		),
 	);

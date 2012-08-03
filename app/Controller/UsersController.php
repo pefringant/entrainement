@@ -12,7 +12,7 @@ class UsersController extends AppController {
  */
 	public $paginate = array(
 		'order' => 'User.short_name ASC',
-		'limit' => 20,
+		'limit' => 10,
 		'recursive' => -1,
 	);
 
@@ -75,7 +75,7 @@ class UsersController extends AppController {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash("Athlète enregistré.", 'alert_success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index', '#' => 'id-'.$this->User->id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
@@ -97,7 +97,7 @@ class UsersController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash("Athlète modifié.", 'alert_success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index', '#' => 'id-'.$this->User->id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}

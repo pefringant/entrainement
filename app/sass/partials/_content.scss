@@ -90,3 +90,17 @@
 	@include background-image(linear-gradient(#ddd, #f3f3f3));
 	border-top: 1px solid #ccc;
 }
+
+.dd-hover {
+	cursor: pointer;
+	background: #eee;
+}
+
+dd.last-update {
+	background: #DFF0D8;
+}
+.table-striped tbody tr.last-update {
+	td {
+		background: #DFF0D8;
+	}
+}

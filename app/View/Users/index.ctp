@@ -1,5 +1,10 @@
 <?php
 $this->set('title_for_layout', "Athlètes");
+
+$this->Html->script('jquery.lastupdate', array('inline' => false));
+$this->Js->buffer("
+	$('tbody').lastupdate();
+");
 ?>
 
 <div class="users index">
@@ -18,7 +23,7 @@ $this->set('title_for_layout', "Athlètes");
 
 		<tbody>
 		<?php foreach ($users as $user): ?>
-			<tr>
+			<tr id="id-<?php echo $user['User']['id']; ?>">
 				<td>
 					<div class="user-program-photo">
 						<?php echo $this->Users->photo($user, 'tiny'); ?>

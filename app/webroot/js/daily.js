@@ -1,4 +1,6 @@
-
+/**
+ * Daily users and their programs
+ */
 $(document).ready(function() {
 /**
  * Modal init
@@ -9,7 +11,7 @@ $(document).ready(function() {
 
 /**
  * Modal openers
- * Using .on() to trigger future ajax added <a>
+ * Using .on() to trigger ajax added links
  * @see http://api.jquery.com/on/
  */
 	$('.daily').on('click', 'a[data-toggle=modal]', function(e) {

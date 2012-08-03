@@ -1,5 +1,10 @@
 <?php
 $this->set('title_for_layout', "Exercices");
+
+$this->Html->script('jquery.lastupdate', array('inline' => false));
+$this->Js->buffer("
+	$('tbody').lastupdate();
+");
 ?>
 
 <div class="users index">
@@ -16,7 +21,7 @@ $this->set('title_for_layout', "Exercices");
 
 		<tbody>
 		<?php foreach ($exercises as $exercise): ?>
-			<tr>
+			<tr id="id-<?php echo $exercise['Exercise']['id']; ?>">
 				<td><?php echo h($exercise['Exercise']['full_name']); ?>&nbsp;</td>
 				<td><strong><?php echo h($exercise['Exercise']['short_name']); ?></strong>&nbsp;</td>
 				<td class="actions">

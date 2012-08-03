@@ -61,8 +61,8 @@ class ProgramsController extends AppController {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		}
-		$this->set('users', $this->Program->User->find('list'));
-		$this->set('exercises', $this->Program->Exercise->find('list'));
+		$this->set('users', $this->Program->User->find('list', array('order' => 'short_name')));
+		$this->set('exercises', $this->Program->Exercise->find('list', array('order' => 'short_name')));
 		$this->set('date', $this->passedArgs['date']);
 		if (!empty($newUser)) {
 			$this->set('user', $newUser);
@@ -84,18 +84,25 @@ class ProgramsController extends AppController {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
 				$this->Session->setFlash("Programme enregistré.", 'alert_success');
-				$this->redirect(array($user_id));
+				$this->redirect(array($user_id, '#' => 'id-'.$this->Program->id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
 		}
 
 		$this->Program->User->id = $user_id;
-		$this->Program->User->recursive = -1;
+		// User data must contain last created program date and exercise, to use as quick add form defaults
+		$this->Program->User->contain(array(
+			'Program' => array(
+				'fields' => array('Program.effective_date', 'Program.exercise_id'),
+				'order' => 'Program.created DESC',
+				'limit' => 1,
+			)
+		));
 		$this->set('user', $this->Program->User->read());
 		$programs = $this->Program->findFuture($user_id);
 		$this->set('programs', $programs);
-		$this->set('exercises', $this->Program->Exercise->find('list'));
+		$this->set('exercises', $this->Program->Exercise->find('list', array('order' => 'short_name')));
 	}
 
 /**
@@ -134,7 +141,7 @@ class ProgramsController extends AppController {
 					$updatedProgram = $this->Program->read();
 					$this->set('updatedProgram', $updatedProgram);
 				} else {
-					$this->redirect(array('action' => 'user_programs', $this->request->data['Program']['user_id']));
+					$this->redirect(array('action' => 'user_programs', $this->request->data['Program']['user_id'], '#' => 'id-'.$this->Program->id));
 				}
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
@@ -143,7 +150,7 @@ class ProgramsController extends AppController {
 			$this->Program->contain(array('User'));
 			$this->request->data = $this->Program->read(null, $id);
 		}
-		$this->set('exercises', $this->Program->Exercise->find('list'));
+		$this->set('exercises', $this->Program->Exercise->find('list', array('order' => 'short_name')));
 	}
 
 /**
@@ -168,7 +175,7 @@ class ProgramsController extends AppController {
 				$this->Session->setFlash("Exercice supprimé.", 'alert_success');
 			}
 		} else {
-			$this->Session->setFlash("Impossible de supprimer l'exerice.", 'alert_error');
+			$this->Session->setFlash("Impossible de supprimer l'exercice.", 'alert_error');
 		}
 		$this->redirect($this->referer());
 	}

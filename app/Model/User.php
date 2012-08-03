@@ -169,6 +169,10 @@ class User extends AppModel {
 				'required' => true,
 				'message' => "Vous devez renseigner le surnom ou le nom abrégé pour l'affichage",
 			),
+			'unique' => array(
+				'rule' => array('isUnique'),
+				'message' => "Ce surnom est déjà donné à quelqu'un d'autre.",
+			),
 		),
 	);
 }

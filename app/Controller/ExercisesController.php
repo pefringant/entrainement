@@ -12,7 +12,7 @@ class ExercisesController extends AppController {
  */
 	public $paginate = array(
 		'order' => 'Exercise.short_name ASC',
-		'limit' => 20,
+		'limit' => 10,
 		'recursive' => -1,
 	);
 	
@@ -35,7 +35,7 @@ class ExercisesController extends AppController {
 			$this->Exercise->create();
 			if ($this->Exercise->save($this->request->data)) {
 				$this->Session->setFlash("Exercice enregistré.", 'alert_success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index', '#' => 'id-'.$this->Exercise->id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
@@ -57,7 +57,7 @@ class ExercisesController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Exercise->save($this->request->data)) {
 				$this->Session->setFlash("Exercice modifié.", 'alert_success');
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'index', '#' => 'id-'.$this->Exercise->id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}
