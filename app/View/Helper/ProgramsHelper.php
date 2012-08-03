@@ -37,12 +37,12 @@ class ProgramsHelper extends AppHelper {
  * @return string Human readable break time
  */
 	public function breakTime($break) {
-		if ($break === '0') {
-			return "aucune";
-		}
-
 		if (is_null($break)) {
 			return "&nbsp;";
+		}
+
+		if (isset($this->breakOptions[$break])) {
+			return $this->breakOptions[$break];
 		}
 
 		if ($break < 60) {
