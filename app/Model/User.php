@@ -55,30 +55,6 @@ class User extends AppModel {
 			'fields' => array(
 				'User.id',
 			),
-			'conditions' => array(
-				'Program.effective_date' => $date,
-			),
-			'recursive' => -1,
-			'joins' => array(
-				array(
-					'table' => 'programs',
-					'alias' => 'Program',
-					'type' => 'LEFT',
-					'conditions' => array(
-						'Program.user_id = User.id',
-					),
-				),
-			),
-			'group' => 'User.id',
-		));
-
-		$users = $this->find('all', array(
-			'fields' => array(
-				'User.id',
-			),
-			/*'conditions' => array(
-				
-			),*/
 			'recursive' => -1,
 			'joins' => array(
 				array(
