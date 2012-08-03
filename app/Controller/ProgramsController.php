@@ -79,7 +79,7 @@ class ProgramsController extends AppController {
  * @param  int $user_id User Id
  * @return array List of user's programs
  */
-	public function user_programs($user_id = null) {
+	public function user_programs($user_id) {
 		if ($this->request->is('post')) {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
@@ -93,14 +93,7 @@ class ProgramsController extends AppController {
 		$this->Program->User->id = $user_id;
 		$this->Program->User->recursive = -1;
 		$this->set('user', $this->Program->User->read());
-		$programs = $this->Program->find('all', array(
-			'conditions' => array(
-				'Program.user_id' => $user_id,
-				'Program.effective_date >=' => date('Y-m-d'),
-			),
-			'order' => 'Program.effective_date ASC',
-			'contain' => array('Exercise'),
-		));
+		$programs = $this->Program->findFuture($user_id);
 		$this->set('programs', $programs);
 		$this->set('exercises', $this->Program->Exercise->find('list'));
 	}
@@ -109,20 +102,13 @@ class ProgramsController extends AppController {
  * User's programs history.
  * 
  * @param  int $user_id User Id
- * @return array List of user's programs
+ * @return array List of past user's programs
  */
-	public function user_history($user_id = null) {
+	public function user_history($user_id) {
 		$this->Program->User->id = $user_id;
 		$this->Program->User->recursive = -1;
 		$this->set('user', $this->Program->User->read());
-		$programs = $this->Program->find('all', array(
-			'conditions' => array(
-				'Program.user_id' => $user_id,
-				'Program.effective_date <' => date('Y-m-d'),
-			),
-			'order' => 'Program.effective_date DESC',
-			'contain' => array('Exercise'),
-		));
+		$programs = $this->Program->findHistory($user_id);
 		$this->set('programs', $programs);
 	}
 

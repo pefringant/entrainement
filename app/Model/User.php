@@ -72,6 +72,28 @@ class User extends AppModel {
 			'group' => 'User.id',
 		));
 
+		$users = $this->find('all', array(
+			'fields' => array(
+				'User.id',
+			),
+			/*'conditions' => array(
+				
+			),*/
+			'recursive' => -1,
+			'joins' => array(
+				array(
+					'table' => 'programs',
+					'alias' => 'Program',
+					'type' => 'INNER',
+					'conditions' => array(
+						'Program.effective_date' => $date,
+						'Program.user_id = User.id',
+					),
+				),
+			),
+			'group' => 'User.id',
+		));
+
 		if (empty($users)) {
 			return false;
 		}

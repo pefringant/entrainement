@@ -50,23 +50,36 @@ class Program extends AppModel {
 	);
 
 /**
- * List programs of one user
+ * List future programs of one user
  * 
  * @param  int $user_id User Id
- * @param  array Additionnal conditions
- * @return array User's programs
+ * @return array User's future programs
  */
-	public function findUserPrograms($user_id, $conditions = array()) {
-		$conditions = array_merge(array(
-			'Program.user_id' => $user_id,
-		), $conditions);
-
+	public function findFuture($user_id) {
 		return $this->find('all', array(
-			'conditions' => $conditions,
-			'order' => 'Program.effective_date ASC',
-			'contain' => array(
-				'Exercise',
+			'conditions' => array(
+				'Program.effective_date >= CURDATE()',
+				'Program.user_id' => $user_id,
 			),
+			'order' => 'Program.effective_date ASC',
+			'contain' => array('Exercise'),
+		));
+	}
+
+/**
+ * List past programs of one user
+ * 
+ * @param  int $user_id User Id
+ * @return array User's past programs
+ */
+	public function findHistory($user_id) {
+		return $this->find('all', array(
+			'conditions' => array(
+				'Program.effective_date < CURDATE()',
+				'Program.user_id' => $user_id,
+			),
+			//'order' => 'Program.effective_date ASC',
+			'contain' => array('Exercise'),
 		));
 	}
 }
