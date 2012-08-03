@@ -43,7 +43,7 @@ $usersByRow = 5;
 	<div id="usersList">
 		<?php if (!empty($users)) {
 			foreach ($users as $i => $user) {
-				$popoverPlacement = ($i % 5 <= 2) ? 'right' : 'left';
+				$popoverPlacement = ($i % $usersByRow <= ($usersByRow / 2)) ? 'right' : 'left';
 				echo $this->element('Users'.DS.'program', array('user' => $user, 'date' => $date, 'popoverPlacement' => $popoverPlacement));
 			}
 		} ?>

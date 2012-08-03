@@ -1,5 +1,7 @@
 <?php
 $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
+
+$this->Html->script('user_programs', array('inline' => false));
 ?>
 
 <div class="programs index">
@@ -29,8 +31,19 @@ $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
 			<dt><?php if ($currentDate != $program['Program']['effective_date']) echo $this->Time->format('d-m-Y', $program['Program']['effective_date']) . " :"; ?></dt>
 			<dd>
 				<?php echo $label; ?>
-				<?php echo $this->Html->link("{$this->TB->icon('pencil')}", array('action' => 'edit', $program['Program']['id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink("{$this->TB->icon('trash')}", array('action' => 'delete', $program['Program']['id']), array('escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet exercice ?"); ?>
+				<span class="actions">
+					<?php echo $this->Html->link(
+						"{$this->TB->icon('pencil')}", 
+						array('action' => 'edit', $program['Program']['id']), 
+						array('escape' => false, 'title' => "Modifier l'exercice")
+					); ?>
+					<?php echo $this->Form->postLink(
+						"{$this->TB->icon('trash')}", 
+						array('action' => 'delete', $program['Program']['id']), 
+						array('escape' => false, 'title' => "Supprimer l'exercice"), 
+						"Etes-vous sûr de vouloir supprimer définitivement cet exercice ?"
+					); ?> 
+				</span>
 			</dd>
 		<?php
 		$currentDate = $program['Program']['effective_date'];

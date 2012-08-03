@@ -18,7 +18,6 @@ class ProgramFixture extends CakeTestFixture {
 		'sets' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'reps' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'weight' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'stop' => array('type' => 'boolean', 'null' => true, 'default' => null),
 		'break' => array('type' => 'integer', 'null' => true, 'default' => null, 'length' => 10),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'indexes' => array(
@@ -39,11 +38,32 @@ class ProgramFixture extends CakeTestFixture {
 			'exercise_id' => 1,
 			'user_id' => 1,
 			'effective_date' => '2012-07-25',
-			'sets' => 1,
-			'reps' => 1,
-			'weight' => 1,
-			'stop' => 1,
-			'break' => 1,
+			'sets' => 4,
+			'reps' => 15,
+			'weight' => null,
+			'break' => null,
+			'created' => '2012-07-25 01:38:52'
+		),
+		array(
+			'id' => 2,
+			'exercise_id' => 2,
+			'user_id' => 1,
+			'effective_date' => '2012-07-25',
+			'sets' => 4,
+			'reps' => 10,
+			'weight' => 85,
+			'break' => 360,
+			'created' => '2012-07-24 01:38:52'
+		),
+		array(
+			'id' => 3,
+			'exercise_id' => 2,
+			'user_id' => 1,
+			'effective_date' => '2012-07-22',
+			'sets' => 4,
+			'reps' => 10,
+			'weight' => 90,
+			'break' => null,
 			'created' => '2012-07-25 01:38:52'
 		),
 	);

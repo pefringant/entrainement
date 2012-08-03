@@ -30,9 +30,23 @@ class ExerciseFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'full_name' => 'Lorem ipsum dolor sit amet',
-			'short_name' => 'Lorem ipsum dolor sit amet',
-			'description' => 'Lorem ipsum dolor sit amet, aliquet feugiat. Convallis morbi fringilla gravida, phasellus feugiat dapibus velit nunc, pulvinar eget sollicitudin venenatis cum nullam, vivamus ut a sed, mollitia lectus. Nulla vestibulum massa neque ut et, id hendrerit sit, feugiat in taciti enim proin nibh, tempor dignissim, rhoncus duis vestibulum nunc mattis convallis.',
+			'full_name' => 'Développé couché',
+			'short_name' => 'DC',
+			'description' => 'Desc DC',
+			'created' => '2012-07-25 00:35:24'
+		),
+		array(
+			'id' => 2,
+			'full_name' => 'Squat',
+			'short_name' => 'Flex',
+			'description' => 'Desc Squat',
+			'created' => '2012-07-25 00:35:24'
+		),
+		array(
+			'id' => 3,
+			'full_name' => 'Soulevé de terre',
+			'short_name' => 'SdT',
+			'description' => 'Desc SdT',
 			'created' => '2012-07-25 00:35:24'
 		),
 	);
