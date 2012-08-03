@@ -53,25 +53,19 @@ class Program extends AppModel {
  * List programs of one user
  * 
  * @param  int $user_id User Id
- * @param  boolean $future If true, only future programs
+ * @param  array Additionnal conditions
  * @return array User's programs
  */
-	public function findUserPrograms($user_id, $future = true) {
-		$conditions = array(
+	public function findUserPrograms($user_id, $conditions = array()) {
+		$conditions = array_merge(array(
 			'Program.user_id' => $user_id,
-		);
-
-		if ($future) {
-			$conditions['Program.effective_date >='] = date('Y-m-d');
-		}
+		), $conditions);
 
 		return $this->find('all', array(
 			'conditions' => $conditions,
 			'order' => 'Program.effective_date ASC',
 			'contain' => array(
-				'Exercise' => array(
-					'order' => 'Exercise.id ASC',
-				),
+				'Exercise',
 			),
 		));
 	}

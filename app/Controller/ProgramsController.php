@@ -73,6 +73,12 @@ class ProgramsController extends AppController {
 		}
 	}
 
+/**
+ * List of User's programs. Can also quickly add a new program
+ * 
+ * @param  int $user_id User Id
+ * @return array List of user's programs
+ */
 	public function user_programs($user_id = null) {
 		if ($this->request->is('post')) {
 			$this->Program->create();
@@ -85,9 +91,39 @@ class ProgramsController extends AppController {
 		}
 
 		$this->Program->User->id = $user_id;
+		$this->Program->User->recursive = -1;
 		$this->set('user', $this->Program->User->read());
-		$this->set('programs', $this->Program->findUserPrograms($user_id));
+		$programs = $this->Program->find('all', array(
+			'conditions' => array(
+				'Program.user_id' => $user_id,
+				'Program.effective_date >=' => date('Y-m-d'),
+			),
+			'order' => 'Program.effective_date ASC',
+			'contain' => array('Exercise'),
+		));
+		$this->set('programs', $programs);
 		$this->set('exercises', $this->Program->Exercise->find('list'));
+	}
+
+/**
+ * User's programs history.
+ * 
+ * @param  int $user_id User Id
+ * @return array List of user's programs
+ */
+	public function user_history($user_id = null) {
+		$this->Program->User->id = $user_id;
+		$this->Program->User->recursive = -1;
+		$this->set('user', $this->Program->User->read());
+		$programs = $this->Program->find('all', array(
+			'conditions' => array(
+				'Program.user_id' => $user_id,
+				'Program.effective_date <' => date('Y-m-d'),
+			),
+			'order' => 'Program.effective_date DESC',
+			'contain' => array('Exercise'),
+		));
+		$this->set('programs', $programs);
 	}
 
 /**

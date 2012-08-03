@@ -2,27 +2,17 @@
 $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
 ?>
 
-
-<div class="programs form">
+<div class="programs index">
 	<h1>Programme de <?php echo $user['User']['short_name']; ?></h1>
 
 	<?php if (empty($programs)): ?>
 		<div class="alert">
 			Pas encore d'exercice programmé.
 		</div>
-	<?php else: ?>
-	<table class="table table-bordered table-striped">
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Exercice</th>
-				<th>Récupération</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
+	<?php else:	$currentDate = false; ?>
+		<dl class="dl-horizontal">
 		<?php foreach ($programs as $program):
-			$label = $this->Html->tag('strong', $program['Exercise']['full_name']);
+			$label = $program['Exercise']['full_name'];
 			if (!empty($program['Program']['sets'])) {
 				$label .= " : " . $program['Program']['sets'] . " x";
 			}
@@ -32,19 +22,20 @@ $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
 			if (!empty($program['Program']['weight'])) {
 				$label .= " @ " . $program['Program']['weight'] . " kg";
 			}
+			if (!is_null($program['Program']['break'])) {
+				$label .= " (" . $this->Programs->breakTime($program['Program']['break']) . ")";
+			}
 		?>
-			<tr>
-				<td><?php echo ucfirst($this->TimePaginator->formatDate($program['Program']['effective_date'])); ?></td>
-				<td><?php echo $label; ?></td>
-				<td><?php echo $this->Programs->breakTime($program['Program']['break']); ?></td>
-				<td class="actions">
-					<?php echo $this->Html->link("{$this->TB->icon('pencil', 'white')} Modifier", array('action' => 'edit', $program['Program']['id']), array('class' => 'btn btn-primary', 'escape' => false)); ?>
-					<?php echo $this->Form->postLink("{$this->TB->icon('trash', 'white')} Supprimer", array('action' => 'delete', $program['Program']['id']), array('class' => 'btn btn-danger', 'escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet exercice ?"); ?>
-				</td>
-			</tr>
-		<?php endforeach; ?>
-		</tbody>
-	</table>
+			<dt><?php if ($currentDate != $program['Program']['effective_date']) echo $this->Time->format('d-m-Y', $program['Program']['effective_date']) . " :"; ?></dt>
+			<dd>
+				<?php echo $label; ?>
+				<?php echo $this->Html->link("{$this->TB->icon('pencil')}", array('action' => 'edit', $program['Program']['id']), array('escape' => false)); ?>
+				<?php echo $this->Form->postLink("{$this->TB->icon('trash')}", array('action' => 'delete', $program['Program']['id']), array('escape' => false), "Etes-vous sûr de vouloir supprimer définitivement cet exercice ?"); ?>
+			</dd>
+		<?php
+		$currentDate = $program['Program']['effective_date'];
+		endforeach; ?>
+		</dl>
 	<?php endif; ?>
 
 	<h3>Nouvel exercice :</h3>
@@ -94,11 +85,21 @@ $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
 	<?php echo $this->Form->end(); ?>
 
 	<div class="actions">
-		<?php
-		echo $this->Html->link("{$this->TB->icon('list')} Liste des athlètes", array('controller' => 'users', 'action' => 'index'), array(
-			'class' => 'btn btn-large',
-			'escape' => false,
-		));
-		?>
+		<?php echo $this->Html->link(
+			"{$this->TB->icon('time')} Historique de {$user['User']['short_name']}", 
+			array('controller' => 'programs', 'action' => 'user_history', $user['User']['id']), 
+			array(
+				'class' => 'btn btn-large',
+				'escape' => false,
+			)
+		); ?> 
+		<?php echo $this->Html->link(
+			"{$this->TB->icon('list')} Liste des athlètes", 
+			array('controller' => 'users', 'action' => 'index'), 
+			array(
+				'class' => 'btn btn-large',
+				'escape' => false,
+			)
+		); ?> 
 	</div>
 </div>
