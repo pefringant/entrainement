@@ -1,23 +1,44 @@
 <?php
 $this->set('title_for_layout', "Athlètes");
 
+$this->Html->script('bootstrap-typeahead', array('inline' => false));
 $this->Html->script('jquery.lastupdate', array('inline' => false));
 $this->Js->buffer("
 	$('tbody').lastupdate();
 ");
+
 ?>
 
 <div class="users index">
 	<h1>Athlètes</h1>
 
+	<?php echo $this->Form->create('User', array(
+		'class' => 'form-inline well',
+		'inputDefaults' => array(
+			'div' => false
+		)
+	)); ?>
+	<?php echo $this->Form->input('query', array(
+		'type' => 'text',
+		'label' => "Recherche rapide :",
+		'class' => 'input-large',
+		'data-provide' => 'typeahead',
+		'data-source' => $names,
+	)); ?> 
+	<?php echo $this->Form->submit("Rechercher", array(
+		'div' => false,
+		'class' => 'btn btn-success'
+	)); ?> 
+	<?php echo $this->Form->end(); ?>
+
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
-					<th>Photo</th>
-					<th><?php echo $this->Paginator->sort('short_name', "Surnom"); ?></th>
-					<th><?php echo $this->Paginator->sort('first_name', "Prénom"); ?></th>
-					<th><?php echo $this->Paginator->sort('last_name', "Nom"); ?></th>
-					<th class="actions">Actions</th>
+				<th>Photo</th>
+				<th><?php echo $this->Paginator->sort('short_name', "Surnom"); ?></th>
+				<th><?php echo $this->Paginator->sort('first_name', "Prénom"); ?></th>
+				<th><?php echo $this->Paginator->sort('last_name', "Nom"); ?></th>
+				<th class="actions">Actions</th>
 			</tr>
 		</thead>
 

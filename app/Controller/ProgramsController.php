@@ -95,6 +95,7 @@ class ProgramsController extends AppController {
 		$this->Program->User->contain(array(
 			'Program' => array(
 				'fields' => array('Program.effective_date', 'Program.exercise_id'),
+				'conditions' => array('Program.effective_date >= CURDATE()'),
 				'order' => 'Program.created DESC',
 				'limit' => 1,
 			)

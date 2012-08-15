@@ -47,6 +47,7 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
+		$this->set('names', $this->User->findTypeaheadSource());
 		$this->set('users', $this->paginate());
 	}
 

@@ -120,6 +120,33 @@ class User extends AppModel {
 	}
 
 /**
+ * Return the list of user names for quick search form and Twitter Bootstrap Typeahead input
+ * 
+ * @return array Users list ready for bootstrap-typeahead.js
+ */
+	public function findTypeaheadSource() {
+		$data = $this->find('all', array(
+			'fields' => array('first_name', 'last_name', 'short_name'),
+			'recursive' => -1,
+		));
+
+		if (empty($data)) {
+			return false;
+		}
+
+		$results = array();
+		foreach ($data as $row) {
+			$name = $row['User']['first_name']." ".$row['User']['last_name'];
+			if (!empty($row['User']['short_name'])) {
+				$name .= ' ('.$row['User']['short_name'].')';
+			}
+			$results[] = '"'.$name.'"';
+		}
+
+		return '['.join(',', $results).']';
+	}
+
+/**
  * Validation rules
  *
  * @var array

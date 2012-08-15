@@ -52,7 +52,7 @@
 		//'bootstrap-button',
 		//'bootstrap-collapse',
 		//'bootstrap-carousel',
-		'bootstrap-typeahead',
+		//'bootstrap-typeahead',
 	);
 
 	foreach ($twitterBoostrapJsFiles as $file) {
