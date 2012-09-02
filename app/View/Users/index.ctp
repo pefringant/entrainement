@@ -23,7 +23,7 @@ $this->Js->buffer("
 		'label' => "Recherche rapide :",
 		'class' => 'input-large',
 		'data-provide' => 'typeahead',
-		'data-source' => $names,
+		'data-source' => '["' . join('","', $names) . '"]',
 	)); ?> 
 	<?php echo $this->Form->submit("Rechercher", array(
 		'div' => false,

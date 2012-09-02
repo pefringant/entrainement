@@ -47,7 +47,11 @@ class UsersController extends AppController {
  * @return void
  */
 	public function index() {
-		$this->set('names', $this->User->findTypeaheadSource());
+		if ($this->request->is('post')) {
+			$this->paginate['conditions'] = array('User.full_name' => $this->request->data['User']['query']);
+		}
+
+		$this->set('names', $this->User->find('list', array('fields' => 'full_name')));
 		$this->set('users', $this->paginate());
 	}
 
