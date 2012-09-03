@@ -33,15 +33,11 @@ if (!is_null($program['Program']['break'])) {
 	}
 }
 
-if (empty($popoverPlacement)) {
-	$popoverPlacement = 'right';
-}
-
 $label = $this->Html->link($label, array('controller' => 'programs', 'action' => 'edit', $program['Program']['id']), array(
 	'rel' => 'popover',
 	'data-original-title' => $title,
 	'data-content' => $desc,
-	'data-placement' => $popoverPlacement,
+	'data-placement' => 'right',
 	'data-toggle' => 'modal',
 	'data-target' => '#modalLayer'
 ));

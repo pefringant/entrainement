@@ -18,6 +18,16 @@
 	}
 }
 
+#users-daily-wrapper {
+	overflow: hidden;
+}
+
+#users-daily {
+	float: left;
+	width: 73%;
+}
+
+
 #usersList {
 	width: 100%;
 }
@@ -43,7 +53,7 @@
 		margin-left: 10px;
 		a {
 			text-shadow: 0px 1px 1px #fff;
-			color: #444;
+			color: #08c;
 		}
 	}
 	.user-program-remove {
@@ -70,6 +80,7 @@
 		}
 		a[rel=popover] {
 			font-weight: bold;
+			color: #000;
 		}
 	}
 }
@@ -96,11 +107,81 @@
 	background: #eee;
 }
 
-dd.last-update {
+dd.last-update, li.last-update {
 	background: #DFF0D8;
 }
 .table-striped tbody tr.last-update {
 	td {
 		background: #DFF0D8;
+	}
+}
+
+#training-plans {
+	float: right;
+	width: 25%;
+	border-left: 1px dashed #999;
+	padding-left: 18px;
+	h2 {
+		margin-bottom: 18px;
+	}
+}
+.training-plan {
+	margin-bottom: 20px;
+	border: 1px solid #ddd;
+	@include border-radius(5px);
+	@include single-box-shadow(#eee, 1px, 1px, 5px);
+}
+.training-plan-header {
+	overflow: hidden;
+	padding: 8px;
+	@include border-top-radius(5px);
+	@include background-image(linear-gradient(#eee, #ddd));
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #bbb;
+	h3 {
+		float: left;
+		margin-left: 5px;
+		a {
+			text-shadow: 0px 1px 1px #fff;
+			color: #08c;
+		}
+	}
+	.training-plan-toggle {
+		float: right;
+		margin: 4px;
+	}
+}
+.training-plan-body {
+	border-top: 2px solid #f0f0f0;
+	.table {
+		margin-bottom: 0;
+		th {
+			font-size: 12px;
+			font-weight: normal;
+			color: #999;
+		}
+		td {
+			font-size: 14px;
+			a:hover {
+				text-decoration: none;
+			}
+			&:first-child {
+				width: 100%;
+			}
+			&:last-child {
+				white-space: nowrap;
+			}
+		}
+		a[rel=popover] {
+			color: #000;
+			font-weight: bold;
+		}
+	}
+}
+
+.training-plan-exercises {
+	margin-bottom: 18px;
+	li {
+		padding: 4px;
 	}
 }

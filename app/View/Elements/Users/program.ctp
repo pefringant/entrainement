@@ -16,7 +16,7 @@
 				$this->TB->icon('remove'),
 				array('controller' => 'programs', 'action' => 'delete_user', $user['User']['id'], $date),
 				array('escape' => false),
-				"Etes-vous sûr de vouloir supprimer définitivement ce programme ?"
+				"Etes-vous sûr de vouloir supprimer définitivement le programme de ".h($user['User']['short_name'])." ?"
 			);
 			?>
 		</div>
@@ -33,10 +33,7 @@
 			</thead>
 			<tbody>
 			<?php foreach ($user['Program'] as $row) {
-				if (empty($popoverPlacement)) {
-					$popoverPlacement = 'right';
-				}
-				echo $this->element('Program'.DS.'user_program', array('program' => array('Program' => $row), 'popoverPlacement' => $popoverPlacement));
+				echo $this->element('Program'.DS.'user_program', array('program' => array('Program' => $row)));
 			} ?>
 			</tbody>
 		</table>

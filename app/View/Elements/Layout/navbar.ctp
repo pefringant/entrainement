@@ -1,8 +1,8 @@
 <?php
 $mainNav = array(
-	"Programmes" => array('plugin'=>null, 'controller'=>'users', 'action'=>'daily'),
 	"Athlètes" => array('plugin'=>null, 'controller'=>'users', 'action'=>'index'),
 	"Exercices" => array('plugin'=>null, 'controller'=>'exercises', 'action'=>'index'),
+	"Programmes types" => array('plugin'=>null, 'controller'=>'training_plans', 'action'=>'index'),
 );
 ?>
 

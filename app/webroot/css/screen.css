@@ -83,11 +83,22 @@ label {
 }
 
 /* line 21, ../../sass/partials/_content.scss */
+#users-daily-wrapper {
+  overflow: hidden;
+}
+
+/* line 25, ../../sass/partials/_content.scss */
+#users-daily {
+  float: left;
+  width: 73%;
+}
+
+/* line 31, ../../sass/partials/_content.scss */
 #usersList {
   width: 100%;
 }
 
-/* line 24, ../../sass/partials/_content.scss */
+/* line 34, ../../sass/partials/_content.scss */
 .user-program {
   display: block;
   width: 300px;
@@ -104,7 +115,7 @@ label {
   box-shadow: 1px 1px 5px #eeeeee;
 }
 
-/* line 34, ../../sass/partials/_content.scss */
+/* line 44, ../../sass/partials/_content.scss */
 .user-program-header {
   overflow: hidden;
   padding: 8px;
@@ -122,55 +133,56 @@ label {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #bbb;
 }
-/* line 41, ../../sass/partials/_content.scss */
+/* line 51, ../../sass/partials/_content.scss */
 .user-program-header h3 {
   float: left;
   margin-left: 10px;
 }
-/* line 44, ../../sass/partials/_content.scss */
+/* line 54, ../../sass/partials/_content.scss */
 .user-program-header h3 a {
   text-shadow: 0px 1px 1px #fff;
-  color: #444;
+  color: #08c;
 }
-/* line 49, ../../sass/partials/_content.scss */
+/* line 59, ../../sass/partials/_content.scss */
 .user-program-header .user-program-remove {
   float: right;
   margin: 4px;
 }
 
-/* line 56, ../../sass/partials/_content.scss */
+/* line 66, ../../sass/partials/_content.scss */
 .user-program-body {
   border-top: 2px solid #f0f0f0;
 }
-/* line 58, ../../sass/partials/_content.scss */
+/* line 68, ../../sass/partials/_content.scss */
 .user-program-body .table {
   margin-bottom: 0;
 }
-/* line 60, ../../sass/partials/_content.scss */
+/* line 70, ../../sass/partials/_content.scss */
 .user-program-body .table th {
   font-size: 12px;
   font-weight: normal;
   color: #999;
 }
-/* line 65, ../../sass/partials/_content.scss */
+/* line 75, ../../sass/partials/_content.scss */
 .user-program-body .table td {
   font-size: 14px;
 }
-/* line 67, ../../sass/partials/_content.scss */
+/* line 77, ../../sass/partials/_content.scss */
 .user-program-body .table td a:hover {
   text-decoration: none;
 }
-/* line 71, ../../sass/partials/_content.scss */
+/* line 81, ../../sass/partials/_content.scss */
 .user-program-body .table a[rel=popover] {
   font-weight: bold;
+  color: #000;
 }
 
-/* line 76, ../../sass/partials/_content.scss */
+/* line 87, ../../sass/partials/_content.scss */
 .user-program-actions {
   width: 35px;
 }
 
-/* line 79, ../../sass/partials/_content.scss */
+/* line 90, ../../sass/partials/_content.scss */
 .user-program-photo {
   float: left;
   width: 24px;
@@ -181,7 +193,7 @@ label {
   box-shadow: 1px 1px 3px #aaaaaa;
 }
 
-/* line 87, ../../sass/partials/_content.scss */
+/* line 98, ../../sass/partials/_content.scss */
 .user-program-footer {
   padding: 8px;
   -moz-border-radius-bottomleft: 5px;
@@ -198,18 +210,123 @@ label {
   border-top: 1px solid #ccc;
 }
 
-/* line 94, ../../sass/partials/_content.scss */
+/* line 105, ../../sass/partials/_content.scss */
 .dd-hover {
   cursor: pointer;
   background: #eee;
 }
 
-/* line 99, ../../sass/partials/_content.scss */
-dd.last-update {
+/* line 110, ../../sass/partials/_content.scss */
+dd.last-update, li.last-update {
   background: #DFF0D8;
 }
 
-/* line 103, ../../sass/partials/_content.scss */
+/* line 114, ../../sass/partials/_content.scss */
 .table-striped tbody tr.last-update td {
   background: #DFF0D8;
+}
+
+/* line 119, ../../sass/partials/_content.scss */
+#training-plans {
+  float: right;
+  width: 25%;
+  border-left: 1px dashed #999;
+  padding-left: 18px;
+}
+/* line 124, ../../sass/partials/_content.scss */
+#training-plans h2 {
+  margin-bottom: 18px;
+}
+
+/* line 128, ../../sass/partials/_content.scss */
+.training-plan {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px #eeeeee;
+  -moz-box-shadow: 1px 1px 5px #eeeeee;
+  box-shadow: 1px 1px 5px #eeeeee;
+}
+
+/* line 134, ../../sass/partials/_content.scss */
+.training-plan-header {
+  overflow: hidden;
+  padding: 8px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(#eeeeee, #dddddd);
+  background-image: -moz-linear-gradient(#eeeeee, #dddddd);
+  background-image: -o-linear-gradient(#eeeeee, #dddddd);
+  background-image: linear-gradient(#eeeeee, #dddddd);
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #bbb;
+}
+/* line 141, ../../sass/partials/_content.scss */
+.training-plan-header h3 {
+  float: left;
+  margin-left: 5px;
+}
+/* line 144, ../../sass/partials/_content.scss */
+.training-plan-header h3 a {
+  text-shadow: 0px 1px 1px #fff;
+  color: #08c;
+}
+/* line 149, ../../sass/partials/_content.scss */
+.training-plan-header .training-plan-toggle {
+  float: right;
+  margin: 4px;
+}
+
+/* line 154, ../../sass/partials/_content.scss */
+.training-plan-body {
+  border-top: 2px solid #f0f0f0;
+}
+/* line 156, ../../sass/partials/_content.scss */
+.training-plan-body .table {
+  margin-bottom: 0;
+}
+/* line 158, ../../sass/partials/_content.scss */
+.training-plan-body .table th {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
+}
+/* line 163, ../../sass/partials/_content.scss */
+.training-plan-body .table td {
+  font-size: 14px;
+}
+/* line 165, ../../sass/partials/_content.scss */
+.training-plan-body .table td a:hover {
+  text-decoration: none;
+}
+/* line 168, ../../sass/partials/_content.scss */
+.training-plan-body .table td:first-child {
+  width: 100%;
+}
+/* line 171, ../../sass/partials/_content.scss */
+.training-plan-body .table td:last-child {
+  white-space: nowrap;
+}
+/* line 175, ../../sass/partials/_content.scss */
+.training-plan-body .table a[rel=popover] {
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 182, ../../sass/partials/_content.scss */
+.training-plan-exercises {
+  margin-bottom: 18px;
+}
+/* line 184, ../../sass/partials/_content.scss */
+.training-plan-exercises li {
+  padding: 4px;
 }

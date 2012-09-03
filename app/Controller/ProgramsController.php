@@ -28,7 +28,7 @@ class ProgramsController extends AppController {
 	public function view($id = null) {
 		$this->Program->id = $id;
 		if (!$this->Program->exists()) {
-			throw new NotFoundException(__('Invalid program'));
+			throw new NotFoundException("Programme introuvable");
 		}
 		$this->set('program', $this->Program->read(null, $id));
 	}
@@ -167,10 +167,9 @@ class ProgramsController extends AppController {
 			throw new MethodNotAllowedException();
 		}
 		$this->Program->id = $id;
-		if (!$program = $this->Program->read()) {
-			throw new NotFoundException(__('Invalid program'));
+		if (!$this->Program->read()) {
+			throw new NotFoundException("Exercice introuvable");
 		}
-		$date = $program['Program']['effective_date'];
 		if ($this->Program->delete()) {
 			if (!$this->request->is('ajax')) {
 				$this->Session->setFlash("Exercice supprimé.", 'alert_success');

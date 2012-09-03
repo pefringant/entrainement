@@ -39,6 +39,7 @@ class UsersController extends AppController {
 		$this->set('date', $date);
 		$users = $this->User->findDaily($date);
 		$this->set('users', $users);
+		$this->set('trainingPlans', ClassRegistry::init('TrainingPlan')->findPlans());
 	}
 
 /**

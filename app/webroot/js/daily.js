@@ -14,7 +14,7 @@ $(document).ready(function() {
  * Using .on() to trigger ajax added links
  * @see http://api.jquery.com/on/
  */
-	$('.daily').on('click', 'a[data-toggle=modal]', function(e) {
+	$('#users-daily').on('click', 'a[data-toggle=modal]', function(e) {
 		e.preventDefault();
 		$('#modalLayer').html('').load($(this).attr('href'));
 	});
@@ -22,9 +22,21 @@ $(document).ready(function() {
 /**
  * Popovers
  */
-	$('#usersList').popover({
+	$('body').popover({
 		selector: 'a[rel=popover]',
 	});
+
+/**
+ * Collapsible
+ */
+	$('.training-plan-body')
+		.on('hidden', function () {
+			$(this).parent().find('i').removeClass().addClass('icon-plus');
+		})
+		.on('shown', function () {
+			$(this).parent().find('i').removeClass().addClass('icon-minus');
+		})
+	;
 
 /**
  * jQuery Masonry to float elements

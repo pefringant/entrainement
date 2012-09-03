@@ -13,7 +13,7 @@ $this->Js->buffer("
 
 	<?php if (empty($programs)): ?>
 		<div class="alert">
-			Pas encore d'exercice programmé.
+			Aucun programme prévu.
 		</div>
 	<?php else: ?>
 		<?php echo $this->element('Program'.DS.'user_programs_actions', compact('user')); ?> 

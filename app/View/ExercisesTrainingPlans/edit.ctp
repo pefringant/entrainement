@@ -1,18 +1,12 @@
 <?php
-$this->set('title_for_layout', "Modifier un exercice");
+$this->set('title_for_layout', "Exercice du programme {$this->request->data['TrainingPlan']['title']}");
 ?>
-<div class="programs form">
-	<h1>Modifier un exercice</h1>
+<div class="exercises form">
+	<h1>Exercice du programme "<?php echo $this->request->data['TrainingPlan']['title']; ?>"</h1>
 
-	<?php echo $this->Form->create('Program', array('class' => 'form-horizontal')); ?>
+	<?php echo $this->Form->create('ExercisesTrainingPlan', array('class' => 'form-horizontal')); ?>
 	<?php echo $this->Form->input('id'); ?> 
-	<?php echo $this->Form->input('user_id', array('type' => 'hidden')); ?> 
-	<div class="control-group">
-		<label class="control-label">Date :</label>
-		<div class="controls">
-			<?php echo $this->Form->date('effective_date'); ?> 
-		</div>
-	</div>
+	<?php echo $this->Form->input('training_plan_id', array('type' => 'hidden')); ?> 
 	<?php echo $this->TB->input('exercise_id', array(
 		'label' => "Exercice :",
 	)); ?> 
@@ -26,12 +20,9 @@ $this->set('title_for_layout', "Modifier un exercice");
 		'min' => 1,
 		'class' => 'span1',
 	)); ?> 
-	<?php echo $this->TB->input('weight', array(
-		'label' => "Poids :",
-		'min' => 1,
-		'style' => 'width: 78px',
-		'help_inline' => " kg"
-	)); ?><br/>
+	<?php echo $this->TB->input('description', array(
+		'label' => "Précisions :", 
+	)); ?> 
 	<?php echo $this->TB->input('break', array(
 		'label' => "Récupération :",
 		'class' => 'span1',
@@ -46,8 +37,8 @@ $this->set('title_for_layout', "Modifier un exercice");
 
 	<div class="actions">
 		<?php echo $this->Html->link(
-			"{$this->TB->icon('calendar')} Programme de {$this->request->data['User']['short_name']}", 
-			array('action' => 'user_programs', $this->request->data['User']['id']), 
+			"{$this->TB->icon('arrow-left')} Retour au programme \"{$this->request->data['TrainingPlan']['title']}\"", 
+			array('controller' => 'training_plans', 'action' => 'edit', $this->request->data['TrainingPlan']['id']), 
 			array(
 				'class' => 'btn btn-large',
 				'escape' => false,
