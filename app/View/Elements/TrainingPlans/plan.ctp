@@ -1,4 +1,4 @@
-<div class="training-plan">
+<div class="program">
 	<div class="training-plan-header">
 		<h3><a href="#" data-toggle="collapse" data-target="#plan-<?php echo $plan['TrainingPlan']['id']; ?>">
 			<?php echo $plan['TrainingPlan']['title']; ?>

@@ -1,4 +1,4 @@
-<div id="user-<?php echo $user['User']['id']; ?>" class="user-program">
+<div id="user-<?php echo $user['User']['id']; ?>" class="program">
 	<div class="user-program-header">
 		<div class="user-program-photo">
 			<?php echo $this->Users->photo($user, 'tiny'); ?> 

@@ -47,16 +47,12 @@ $this->Html->script('daily', array('inline' => false));
 					echo $this->element('Users'.DS.'program', array('user' => $user, 'date' => $date));
 				}
 			} ?>
+
+			<?php foreach ($trainingPlans as $plan) {
+				echo $this->element('TrainingPlans'.DS.'plan', array('plan' => $plan));
+			} ?>
 		</div>
 
 		<?php echo $this->element('Pagination'.DS.'time_pagination', compact('date')); ?>
-	</div>
-
-	<div id="training-plans">
-		<h2>Programmes types</h2>
-
-		<?php foreach ($trainingPlans as $plan) {
-			echo $this->element('TrainingPlans'.DS.'plan', array('plan' => $plan));
-		} ?>
 	</div>
 </div>

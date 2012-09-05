@@ -81,7 +81,7 @@ $this->Js->buffer("
 				$label .= " : " . $plan['ExercisesTrainingPlan']['sets'] . " séries";
 			}
 			if (!empty($plan['ExercisesTrainingPlan']['reps'])) {
-				$label .= "de " . $plan['ExercisesTrainingPlan']['reps'] . " répétitions";
+				$label .= " de " . $plan['ExercisesTrainingPlan']['reps'] . " répétitions";
 			}
 			if (!empty($plan['ExercisesTrainingPlan']['description'])) {
 				$label .= ", " . $plan['ExercisesTrainingPlan']['description'];

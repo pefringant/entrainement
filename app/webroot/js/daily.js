@@ -32,9 +32,11 @@ $(document).ready(function() {
 	$('.training-plan-body')
 		.on('hidden', function () {
 			$(this).parent().find('i').removeClass().addClass('icon-plus');
+			$('#usersList').masonry('reload');
 		})
 		.on('shown', function () {
 			$(this).parent().find('i').removeClass().addClass('icon-minus');
+			$('#usersList').masonry('reload');
 		})
 	;
 
@@ -42,7 +44,7 @@ $(document).ready(function() {
  * jQuery Masonry to float elements
  */
 	$('#usersList').masonry({
-		itemSelector : '.user-program',
+		itemSelector : '.program',
 		columnWidth : 324
 	});
 });
