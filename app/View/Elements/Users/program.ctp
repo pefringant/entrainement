@@ -41,11 +41,11 @@
 	</div>
 	<div class="user-program-footer">
 		<?php echo $this->Html->link(
-			"{$this->TB->icon('plus')} Ajouter un exercice",
+			"{$this->TB->icon('plus', 'white')} Ajouter un exercice",
 			array('controller' => 'programs', 'action' => 'add', 'date' => $date, 'user' => $user['User']['id']),
 			array(
 				'escape' => false,
-				'class' => 'btn btn-mini',
+				'class' => 'btn btn-mini btn-primary',
 				'data-toggle' => 'modal',
 				'data-target' => '#modalLayer'
 			)

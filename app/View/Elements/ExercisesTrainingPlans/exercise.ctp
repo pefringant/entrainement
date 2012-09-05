@@ -31,7 +31,7 @@ $label = $this->Html->link($label, '#', array(
 	'rel' => 'popover',
 	'data-original-title' => $title,
 	'data-content' => $desc,
-	'data-placement' => 'left',
+	'data-placement' => 'bottom',
 ));
 ?>
 <tr>

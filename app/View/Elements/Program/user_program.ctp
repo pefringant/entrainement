@@ -37,7 +37,7 @@ $label = $this->Html->link($label, array('controller' => 'programs', 'action' =>
 	'rel' => 'popover',
 	'data-original-title' => $title,
 	'data-content' => $desc,
-	'data-placement' => 'right',
+	'data-placement' => 'bottom',
 	'data-toggle' => 'modal',
 	'data-target' => '#modalLayer'
 ));

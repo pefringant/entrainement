@@ -119,13 +119,13 @@ label {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(#eeeeee, #dddddd);
-  background-image: -moz-linear-gradient(#eeeeee, #dddddd);
-  background-image: -o-linear-gradient(#eeeeee, #dddddd);
-  background-image: linear-gradient(#eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fcfcfc), color-stop(100%, #cccccc));
+  background-image: -webkit-linear-gradient(#fcfcfc, #cccccc);
+  background-image: -moz-linear-gradient(#fcfcfc, #cccccc);
+  background-image: -o-linear-gradient(#fcfcfc, #cccccc);
+  background-image: linear-gradient(#fcfcfc, #cccccc);
   border-top: 1px solid #fff;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #999;
 }
 /* line 45, ../../sass/partials/_content.scss */
 .user-program-header h3 {
@@ -145,7 +145,7 @@ label {
 
 /* line 60, ../../sass/partials/_content.scss */
 .user-program-body {
-  border-top: 2px solid #f0f0f0;
+  border-top: 2px solid #ddd;
 }
 /* line 62, ../../sass/partials/_content.scss */
 .user-program-body .table {
@@ -189,53 +189,42 @@ label {
 
 /* line 92, ../../sass/partials/_content.scss */
 .user-program-footer {
-  padding: 8px;
+  padding: 4px 5px;
   -moz-border-radius-bottomleft: 5px;
   -webkit-border-bottom-left-radius: 5px;
   border-bottom-left-radius: 5px;
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dddddd), color-stop(100%, #f3f3f3));
-  background-image: -webkit-linear-gradient(#dddddd, #f3f3f3);
-  background-image: -moz-linear-gradient(#dddddd, #f3f3f3);
-  background-image: -o-linear-gradient(#dddddd, #f3f3f3);
-  background-image: linear-gradient(#dddddd, #f3f3f3);
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #999;
+  text-align: center;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaaaa), color-stop(100%, #eeeeee));
+  background-image: -webkit-linear-gradient(#aaaaaa, #eeeeee);
+  background-image: -moz-linear-gradient(#aaaaaa, #eeeeee);
+  background-image: -o-linear-gradient(#aaaaaa, #eeeeee);
+  background-image: linear-gradient(#aaaaaa, #eeeeee);
 }
 
-/* line 99, ../../sass/partials/_content.scss */
+/* line 100, ../../sass/partials/_content.scss */
 .dd-hover {
   cursor: pointer;
   background: #eee;
 }
 
-/* line 104, ../../sass/partials/_content.scss */
+/* line 105, ../../sass/partials/_content.scss */
 dd.last-update, li.last-update {
   background: #DFF0D8;
 }
 
-/* line 108, ../../sass/partials/_content.scss */
+/* line 109, ../../sass/partials/_content.scss */
 .table-striped tbody tr.last-update td {
   background: #DFF0D8;
 }
 
-/* line 113, ../../sass/partials/_content.scss */
-#training-plans {
-  float: right;
-  width: 25%;
-  border-left: 1px dashed #999;
-  padding-left: 18px;
-}
-/* line 118, ../../sass/partials/_content.scss */
-#training-plans h2 {
-  margin-bottom: 18px;
-}
-
-/* line 122, ../../sass/partials/_content.scss */
+/* line 114, ../../sass/partials/_content.scss */
 .training-plan {
   margin-bottom: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -246,7 +235,7 @@ dd.last-update, li.last-update {
   box-shadow: 1px 1px 5px #eeeeee;
 }
 
-/* line 128, ../../sass/partials/_content.scss */
+/* line 120, ../../sass/partials/_content.scss */
 .training-plan-header {
   overflow: hidden;
   padding: 8px;
@@ -256,71 +245,77 @@ dd.last-update, li.last-update {
   -moz-border-radius-topright: 5px;
   -webkit-border-top-right-radius: 5px;
   border-top-right-radius: 5px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
-  background-image: -webkit-linear-gradient(#eeeeee, #dddddd);
-  background-image: -moz-linear-gradient(#eeeeee, #dddddd);
-  background-image: -o-linear-gradient(#eeeeee, #dddddd);
-  background-image: linear-gradient(#eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fcfcfc), color-stop(100%, #cccccc));
+  background-image: -webkit-linear-gradient(#fcfcfc, #cccccc);
+  background-image: -moz-linear-gradient(#fcfcfc, #cccccc);
+  background-image: -o-linear-gradient(#fcfcfc, #cccccc);
+  background-image: linear-gradient(#fcfcfc, #cccccc);
   border-top: 1px solid #fff;
-  border-bottom: 1px solid #bbb;
+  border-bottom: 1px solid #aaa;
 }
-/* line 135, ../../sass/partials/_content.scss */
+/* line 127, ../../sass/partials/_content.scss */
 .training-plan-header h3 {
   float: left;
   margin-left: 5px;
 }
-/* line 138, ../../sass/partials/_content.scss */
+/* line 130, ../../sass/partials/_content.scss */
 .training-plan-header h3 a {
   text-shadow: 0px 1px 1px #fff;
   color: #08c;
 }
-/* line 143, ../../sass/partials/_content.scss */
+/* line 135, ../../sass/partials/_content.scss */
 .training-plan-header .training-plan-toggle {
   float: right;
   margin: 4px;
 }
 
-/* line 148, ../../sass/partials/_content.scss */
+/* line 140, ../../sass/partials/_content.scss */
 .training-plan-body {
-  border-top: 2px solid #f0f0f0;
+  border-top: 2px solid #ddd;
 }
-/* line 150, ../../sass/partials/_content.scss */
+/* line 142, ../../sass/partials/_content.scss */
 .training-plan-body .table {
   margin-bottom: 0;
 }
-/* line 152, ../../sass/partials/_content.scss */
+/* line 144, ../../sass/partials/_content.scss */
 .training-plan-body .table th {
   font-size: 12px;
   font-weight: normal;
   color: #999;
 }
-/* line 157, ../../sass/partials/_content.scss */
+/* line 149, ../../sass/partials/_content.scss */
 .training-plan-body .table td {
   font-size: 14px;
 }
-/* line 159, ../../sass/partials/_content.scss */
+/* line 151, ../../sass/partials/_content.scss */
 .training-plan-body .table td a:hover {
   text-decoration: none;
 }
-/* line 162, ../../sass/partials/_content.scss */
+/* line 154, ../../sass/partials/_content.scss */
 .training-plan-body .table td:first-child {
   width: 100%;
 }
-/* line 165, ../../sass/partials/_content.scss */
+/* line 157, ../../sass/partials/_content.scss */
 .training-plan-body .table td:last-child {
   white-space: nowrap;
 }
-/* line 169, ../../sass/partials/_content.scss */
+/* line 161, ../../sass/partials/_content.scss */
 .training-plan-body .table a[rel=popover] {
   color: #000;
   font-weight: bold;
 }
 
-/* line 176, ../../sass/partials/_content.scss */
+/* line 168, ../../sass/partials/_content.scss */
 .training-plan-exercises {
   margin-bottom: 18px;
 }
-/* line 178, ../../sass/partials/_content.scss */
+/* line 170, ../../sass/partials/_content.scss */
 .training-plan-exercises li {
   padding: 4px;
+}
+
+/* line 176, ../../sass/partials/_content.scss */
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: #eee;
 }

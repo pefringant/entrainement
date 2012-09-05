@@ -39,9 +39,9 @@
 	overflow: hidden;
 	padding: 8px;
 	@include border-top-radius(5px);
-	@include background-image(linear-gradient(#eee, #ddd));
+	@include background-image(linear-gradient(#fcfcfc, #ccc));
 	border-top: 1px solid #fff;
-	border-bottom: 1px solid #bbb;
+	border-bottom: 1px solid #999;
 	h3 {
 		float: left;
 		margin-left: 10px;
@@ -58,7 +58,7 @@
 
 
 .user-program-body {
-	border-top: 2px solid #f0f0f0;
+	border-top: 2px solid #ddd;
 	.table {
 		margin-bottom: 0;
 		th {
@@ -90,10 +90,11 @@
 }
 
 .user-program-footer {
-	padding: 8px;
+	padding: 4px 5px;
 	@include border-bottom-radius(5px);
-	@include background-image(linear-gradient(#ddd, #f3f3f3));
-	border-top: 1px solid #ccc;
+	border-top: 1px solid #999;
+	text-align: center;
+	@include background-image(linear-gradient(#aaa, #eee));
 }
 
 .dd-hover {
@@ -110,18 +111,9 @@ dd.last-update, li.last-update {
 	}
 }
 
-#training-plans {
-	float: right;
-	width: 25%;
-	border-left: 1px dashed #999;
-	padding-left: 18px;
-	h2 {
-		margin-bottom: 18px;
-	}
-}
 .training-plan {
 	margin-bottom: 20px;
-	border: 1px solid #ddd;
+	border: 1px solid #ccc;
 	@include border-radius(5px);
 	@include single-box-shadow(#eee, 1px, 1px, 5px);
 }
@@ -129,9 +121,9 @@ dd.last-update, li.last-update {
 	overflow: hidden;
 	padding: 8px;
 	@include border-top-radius(5px);
-	@include background-image(linear-gradient(#eee, #ddd));
+	@include background-image(linear-gradient(#fcfcfc, #ccc));
 	border-top: 1px solid #fff;
-	border-bottom: 1px solid #bbb;
+	border-bottom: 1px solid #aaa;
 	h3 {
 		float: left;
 		margin-left: 5px;
@@ -146,7 +138,7 @@ dd.last-update, li.last-update {
 	}
 }
 .training-plan-body {
-	border-top: 2px solid #f0f0f0;
+	border-top: 2px solid #ddd;
 	.table {
 		margin-bottom: 0;
 		th {
@@ -178,4 +170,9 @@ dd.last-update, li.last-update {
 	li {
 		padding: 4px;
 	}
+}
+
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+	background-color: #eee;
 }
