@@ -84,7 +84,7 @@ class ProgramsController extends AppController {
 			$this->Program->create();
 			if ($this->Program->save($this->request->data)) {
 				$this->Session->setFlash("Programme enregistré.", 'alert_success');
-				$this->redirect(array($user_id, '#' => 'id-'.$this->Program->id));
+				$this->redirect(array($user_id));
 			} else {
 				$this->Session->setFlash("Veuillez corriger les erreurs.", 'alert_notice');
 			}

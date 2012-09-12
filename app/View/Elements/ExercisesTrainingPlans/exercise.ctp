@@ -1,16 +1,16 @@
 <?php
 $label = $exercise['Exercise']['short_name'];
 $title = $exercise['Exercise']['full_name'];
-$desc = "<em>Pas de précisions.</em>";
+$desc = '';
 
 if (!empty($exercise['sets'])) {
-	$label .= " : " . $exercise['sets'] . " séries";
-	$desc = $this->Html->tag('strong', $exercise['sets']) . " série";
+	$label .= " : " . $exercise['sets'] . " x";
+	$desc  .= $this->Html->tag('strong', $exercise['sets']) . " série";
 	if ($exercise['sets'] > 1) $desc .= "s";
 }
 
 if (!empty($exercise['reps'])) {
-	$label .= " de " . $exercise['reps'];
+	$label .= " " . $exercise['reps'];
 	$desc  .= " de " . $this->Html->tag('strong', $exercise['reps']) . " répétitions";
 }
 
@@ -25,6 +25,10 @@ if (!is_null($exercise['break'])) {
 	} else {
 		$desc .= " avec " . $this->Html->tag('strong', $this->Programs->breakTime($exercise['break'])) . " de récupération.";
 	}
+}
+
+if (!$desc) {
+	$desc = "<em>Pas de précisions.</em>";
 }
 
 $label = $this->Html->link($label, '#', array(

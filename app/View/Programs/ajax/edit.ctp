@@ -16,6 +16,13 @@ if (!empty($updatedProgram)) {
 }
 
 /**
+ * Blink alert box once
+ */
+$this->Js->buffer("
+	$('#modalLayerBody .alert').fadeOut('fast').fadeIn('fast');
+");
+
+/**
  * Program Edit Form
  */
 echo $this->Form->create('Program', array(

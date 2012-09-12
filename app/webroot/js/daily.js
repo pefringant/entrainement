@@ -16,7 +16,7 @@ $(document).ready(function() {
  */
 	$('#users-daily').on('click', 'a[data-toggle=modal]', function(e) {
 		e.preventDefault();
-		$('#modalLayer').html('').load($(this).attr('href'));
+		$('#modalLayer').html('Chargement...').load($(this).attr('href'));
 	});
 
 /**
@@ -44,7 +44,6 @@ $(document).ready(function() {
  * jQuery Masonry to float elements
  */
 	$('#usersList').masonry({
-		itemSelector : '.program',
-		columnWidth : 324
+		itemSelector : '.program'
 	});
 });

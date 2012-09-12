@@ -2,10 +2,6 @@
 $this->set('title_for_layout', "Programme de {$user['User']['short_name']}");
 
 $this->Html->script('user_programs', array('inline' => false));
-$this->Html->script('jquery.lastupdate', array('inline' => false));
-$this->Js->buffer("
-	$('dl').lastupdate();
-");
 ?>
 
 <div class="programs index">

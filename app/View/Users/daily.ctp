@@ -27,20 +27,6 @@ $this->Html->script('daily', array('inline' => false));
 			<?php endif; ?>
 		</div>
 
-		<?php if (empty($users)): ?>
-		<div class="alert">
-			<strong>Pas d'athlète enregistré :</strong> 
-			<?php echo $this->Html->link(
-				"ajouter un athlète", 
-				array('controller' => 'programs', 'action' => 'add', 'date' => $date), 
-				array(
-					'data-toggle' => 'modal',
-					'data-target' => '#modalLayer'
-				)
-			); ?>
-		</div>
-		<?php endif; ?>
-
 		<div id="usersList">
 			<?php if (!empty($users)) {
 				foreach ($users as $i => $user) {

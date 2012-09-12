@@ -95,9 +95,10 @@ label {
 /* line 28, ../../sass/partials/_content.scss */
 .program {
   display: block;
-  width: 300px;
   float: left;
   margin-bottom: 20px;
+  margin-right: 1%;
+  width: 18.9%;
   border: 1px solid #ddd;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -109,7 +110,7 @@ label {
   box-shadow: 1px 1px 5px #eeeeee;
 }
 
-/* line 38, ../../sass/partials/_content.scss */
+/* line 39, ../../sass/partials/_content.scss */
 .user-program-header {
   overflow: hidden;
   padding: 8px;
@@ -127,56 +128,64 @@ label {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #999;
 }
-/* line 45, ../../sass/partials/_content.scss */
+/* line 46, ../../sass/partials/_content.scss */
 .user-program-header h3 {
   float: left;
   margin-left: 10px;
 }
-/* line 48, ../../sass/partials/_content.scss */
+/* line 49, ../../sass/partials/_content.scss */
 .user-program-header h3 a {
   text-shadow: 0px 1px 1px #fff;
   color: #08c;
 }
-/* line 53, ../../sass/partials/_content.scss */
+/* line 54, ../../sass/partials/_content.scss */
 .user-program-header .user-program-remove {
   float: right;
   margin: 4px;
 }
 
-/* line 60, ../../sass/partials/_content.scss */
+/* line 61, ../../sass/partials/_content.scss */
 .user-program-body {
   border-top: 2px solid #ddd;
 }
-/* line 62, ../../sass/partials/_content.scss */
+/* line 63, ../../sass/partials/_content.scss */
 .user-program-body .table {
   margin-bottom: 0;
 }
-/* line 64, ../../sass/partials/_content.scss */
+/* line 65, ../../sass/partials/_content.scss */
 .user-program-body .table th {
   font-size: 12px;
   font-weight: normal;
   color: #999;
 }
-/* line 69, ../../sass/partials/_content.scss */
+/* line 70, ../../sass/partials/_content.scss */
 .user-program-body .table td {
   font-size: 14px;
 }
-/* line 71, ../../sass/partials/_content.scss */
+/* line 72, ../../sass/partials/_content.scss */
 .user-program-body .table td a:hover {
   text-decoration: none;
 }
 /* line 75, ../../sass/partials/_content.scss */
+.user-program-body .table td:first-child {
+  width: 100%;
+}
+/* line 78, ../../sass/partials/_content.scss */
+.user-program-body .table td:not(first-child) {
+  white-space: nowrap;
+}
+/* line 82, ../../sass/partials/_content.scss */
 .user-program-body .table a[rel=popover] {
   font-weight: bold;
   color: #000;
 }
 
-/* line 81, ../../sass/partials/_content.scss */
+/* line 88, ../../sass/partials/_content.scss */
 .user-program-actions {
   width: 35px;
 }
 
-/* line 84, ../../sass/partials/_content.scss */
+/* line 91, ../../sass/partials/_content.scss */
 .user-program-photo {
   float: left;
   width: 24px;
@@ -187,7 +196,7 @@ label {
   box-shadow: 1px 1px 3px #aaaaaa;
 }
 
-/* line 92, ../../sass/partials/_content.scss */
+/* line 99, ../../sass/partials/_content.scss */
 .user-program-footer {
   padding: 4px 5px;
   -moz-border-radius-bottomleft: 5px;
@@ -205,23 +214,23 @@ label {
   background-image: linear-gradient(#aaaaaa, #eeeeee);
 }
 
-/* line 100, ../../sass/partials/_content.scss */
+/* line 107, ../../sass/partials/_content.scss */
 .dd-hover {
   cursor: pointer;
   background: #eee;
 }
 
-/* line 105, ../../sass/partials/_content.scss */
+/* line 112, ../../sass/partials/_content.scss */
 dd.last-update, li.last-update {
   background: #DFF0D8;
 }
 
-/* line 109, ../../sass/partials/_content.scss */
+/* line 116, ../../sass/partials/_content.scss */
 .table-striped tbody tr.last-update td {
   background: #DFF0D8;
 }
 
-/* line 114, ../../sass/partials/_content.scss */
+/* line 121, ../../sass/partials/_content.scss */
 .training-plan {
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -235,7 +244,7 @@ dd.last-update, li.last-update {
   box-shadow: 1px 1px 5px #eeeeee;
 }
 
-/* line 120, ../../sass/partials/_content.scss */
+/* line 127, ../../sass/partials/_content.scss */
 .training-plan-header {
   overflow: hidden;
   padding: 8px;
@@ -253,68 +262,68 @@ dd.last-update, li.last-update {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #aaa;
 }
-/* line 127, ../../sass/partials/_content.scss */
+/* line 134, ../../sass/partials/_content.scss */
 .training-plan-header h3 {
   float: left;
   margin-left: 5px;
 }
-/* line 130, ../../sass/partials/_content.scss */
+/* line 137, ../../sass/partials/_content.scss */
 .training-plan-header h3 a {
   text-shadow: 0px 1px 1px #fff;
   color: #08c;
 }
-/* line 135, ../../sass/partials/_content.scss */
+/* line 142, ../../sass/partials/_content.scss */
 .training-plan-header .training-plan-toggle {
   float: right;
   margin: 4px;
 }
 
-/* line 140, ../../sass/partials/_content.scss */
+/* line 147, ../../sass/partials/_content.scss */
 .training-plan-body {
   border-top: 2px solid #ddd;
 }
-/* line 142, ../../sass/partials/_content.scss */
+/* line 149, ../../sass/partials/_content.scss */
 .training-plan-body .table {
   margin-bottom: 0;
 }
-/* line 144, ../../sass/partials/_content.scss */
+/* line 151, ../../sass/partials/_content.scss */
 .training-plan-body .table th {
   font-size: 12px;
   font-weight: normal;
   color: #999;
 }
-/* line 149, ../../sass/partials/_content.scss */
+/* line 156, ../../sass/partials/_content.scss */
 .training-plan-body .table td {
   font-size: 14px;
 }
-/* line 151, ../../sass/partials/_content.scss */
+/* line 158, ../../sass/partials/_content.scss */
 .training-plan-body .table td a:hover {
   text-decoration: none;
 }
-/* line 154, ../../sass/partials/_content.scss */
+/* line 161, ../../sass/partials/_content.scss */
 .training-plan-body .table td:first-child {
   width: 100%;
 }
-/* line 157, ../../sass/partials/_content.scss */
-.training-plan-body .table td:last-child {
+/* line 164, ../../sass/partials/_content.scss */
+.training-plan-body .table td:not(first-child) {
   white-space: nowrap;
 }
-/* line 161, ../../sass/partials/_content.scss */
+/* line 168, ../../sass/partials/_content.scss */
 .training-plan-body .table a[rel=popover] {
   color: #000;
   font-weight: bold;
 }
 
-/* line 168, ../../sass/partials/_content.scss */
+/* line 175, ../../sass/partials/_content.scss */
 .training-plan-exercises {
   margin-bottom: 18px;
 }
-/* line 170, ../../sass/partials/_content.scss */
+/* line 177, ../../sass/partials/_content.scss */
 .training-plan-exercises li {
   padding: 4px;
 }
 
-/* line 176, ../../sass/partials/_content.scss */
+/* line 183, ../../sass/partials/_content.scss */
 .table-striped tbody tr:nth-child(odd) td,
 .table-striped tbody tr:nth-child(odd) th {
   background-color: #eee;

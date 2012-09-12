@@ -27,9 +27,10 @@
 }
 .program {
 	display: block;
-	width: 300px;
 	float: left;
 	margin-bottom: 20px;
+	margin-right: 1%;
+	width: 18.9%;
 	border: 1px solid #ddd;
 	@include border-radius(5px);
 	@include single-box-shadow(#eee, 1px, 1px, 5px);
@@ -70,6 +71,12 @@
 			font-size: 14px;
 			a:hover {
 				text-decoration: none;
+			}
+			&:first-child {
+				width: 100%;
+			}
+			&:not(first-child) {
+				white-space: nowrap;
 			}
 		}
 		a[rel=popover] {
@@ -154,7 +161,7 @@ dd.last-update, li.last-update {
 			&:first-child {
 				width: 100%;
 			}
-			&:last-child {
+			&:not(first-child) {
 				white-space: nowrap;
 			}
 		}

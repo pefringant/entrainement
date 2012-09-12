@@ -15,10 +15,16 @@ if (!empty($newProgram)) {
 		");
 	}
 	$this->Js->buffer("
-		$('.daily .alert').alert('close');
 		$('#usersList').masonry('reload');
 	");
 }
+
+/**
+ * Blink alert box once
+ */
+$this->Js->buffer("
+	$('#modalLayerBody .alert').fadeOut('fast').fadeIn('fast');
+");
 
 /**
  * Program Add Form

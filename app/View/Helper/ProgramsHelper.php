@@ -10,7 +10,7 @@ class ProgramsHelper extends AppHelper {
  * @var array (nb of seconds => human readable break time)
  */
 	public $breakOptions = array(
-		'0' => "Aucune",
+		'0' => "0",
 		'30' => "30 sec",
 		'60' => "1 min",
 		'90' => "1 min 30",

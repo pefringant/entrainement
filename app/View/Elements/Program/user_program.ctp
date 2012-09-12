@@ -7,11 +7,11 @@ if (isset($program['Program']['Exercise'])) {
 
 $label = $exercise['short_name'];
 $title = $exercise['full_name'];
-$desc = "<em>Pas de précisions.</em>";
+$desc = '';
 
 if (!empty($program['Program']['sets'])) {
 	$label .= " : " . $program['Program']['sets'] . " x";
-	$desc = $this->Html->tag('strong', $program['Program']['sets']) . " série";
+	$desc  .= $this->Html->tag('strong', $program['Program']['sets']) . " série";
 	if ($program['Program']['sets'] > 1) $desc .= "s";
 }
 
@@ -31,6 +31,10 @@ if (!is_null($program['Program']['break'])) {
 	} else {
 		$desc .= " avec " . $this->Html->tag('strong', $this->Programs->breakTime($program['Program']['break'])) . " de récupération.";
 	}
+}
+
+if (!$desc) {
+	$desc = "<em>Pas de précisions.</em>";
 }
 
 $label = $this->Html->link($label, array('controller' => 'programs', 'action' => 'edit', $program['Program']['id']), array(
